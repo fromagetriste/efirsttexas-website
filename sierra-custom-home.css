@@ -481,7 +481,7 @@ header nav > ul > li > a {
 }
 header.fixed.dynamic.reduced .sub-nav > li > a,
 header.fixed.dynamic.reduced nav > ul > li > a {
-  color: #02cc7d !important;
+  color: #e1df32 !important;
 }
 header.fixed.dynamic.reduced {
   background: #000;
@@ -1900,7 +1900,7 @@ h6 {
   bottom: -2px;
   width: 45%;
   height: 2px;
-  background: #02cc7d;
+  background: #e1df32;
   transition: 300ms ease all;
 }
 
@@ -1981,7 +1981,7 @@ body
 #hero_bar .search-heading h3 span {
   display: block;
   font-family: "Josefin Sans", Sans-serif !important;
-  color: #bbd7df;
+  color: #e1df32;
   font-size: 60%;
   position: relative;
   margin-bottom: 10px;
@@ -1994,7 +1994,7 @@ body
   right: 100%;
   margin-right: 8px;
   width: 50px;
-  border-top: 1px solid #bbd7df;
+  border-top: 1px solid #e1df32;
   position: absolute;
 }
 
@@ -2090,7 +2090,7 @@ body
   left: 0;
   width: 100%;
   height: 0.1em;
-  background-color: #bbd7df;
+  background-color: #e1df32;
   opacity: 1;
   transform: translate3d(-101%, 0, 0);
   transition:
@@ -2100,7 +2100,7 @@ body
 
 #hero_bar .search-actions #search_cta li a .num {
   display: block;
-  color: #bbd7df;
+  color: #e1df32;
   font-family: "Marope", Georgia, serif;
   font-style: italic;
   font-size: 18px;
@@ -2172,9 +2172,9 @@ body
   font-size: 13px;
   font-weight: 600;
   margin-left: 2px;
-  background: #008244;
+  background: #214a24;
   color: #fff;
-  border: 1px solid #008244;
+  border: 1px solid #214a24;
 }
 
 @media (max-width: 991.98px) {
@@ -2353,7 +2353,7 @@ body
 }
 
 #cherieYoung #pele #welcome p a {
-  color: #73b5b5;
+  color: #214a24;
 }
 
 #search_areas {
@@ -2628,7 +2628,7 @@ body
   position: absolute;
   width: 0px;
   height: 0px;
-  border: 2px solid #02cc7d;
+  border: 2px solid #e1df32;
   transition: 0.4s;
   z-index: 1;
   opacity: 0;
@@ -3344,7 +3344,7 @@ header.dynamic nav .menu-button .bar {
   font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
 }
 #efirsttexas-navbar.is-scrolled {
-  background: rgba(48, 48, 48, 0.96);
+  background: rgba(33, 74, 36, 0.97);
   border-bottom-color: rgba(255, 255, 255, 0.12);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
 }
@@ -3411,7 +3411,7 @@ header.dynamic nav .menu-button .bar {
 }
 #efirsttexas-navbar .ft-navbar__link:hover,
 #efirsttexas-navbar .ft-navbar__link:focus-visible {
-  color: #e3c47b !important;
+  color: #e1df32 !important;
 }
 #efirsttexas-navbar .ft-navbar__chevron {
   width: 7px;
@@ -3454,7 +3454,7 @@ header.dynamic nav .menu-button .bar {
 #efirsttexas-navbar .ft-navbar__submenu a:hover,
 #efirsttexas-navbar .ft-navbar__submenu a:focus-visible {
   color: #fff !important;
-  background: #32498c;
+  background: #214a24;
 }
 #efirsttexas-navbar .ft-navbar__contact {
   display: inline-flex;
@@ -3503,7 +3503,7 @@ body.admin-bar #efirsttexas-navbar {
 @media (max-width: 991px) {
   #efirsttexas-navbar,
   #efirsttexas-navbar.is-scrolled {
-    background: rgba(43, 43, 43, 0.96);
+    background: rgba(33, 74, 36, 0.97);
     border-bottom-color: rgba(255, 255, 255, 0.12);
   }
   #efirsttexas-navbar .ft-navbar__inner,
@@ -3558,7 +3558,7 @@ body.admin-bar #efirsttexas-navbar {
     max-height: calc(100vh - 78px);
     overflow-y: auto;
     padding: 14px 24px 22px;
-    background: rgba(43, 43, 43, 0.98);
+    background: rgba(33, 74, 36, 0.99);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
   }
   #efirsttexas-navbar.is-menu-open .ft-navbar__navigation {
@@ -3641,13 +3641,13 @@ body.admin-bar #efirsttexas-navbar {
 }
 #customModule44 .hero-heading .et_pb_text_0 h1 {
   color: #fff !important;
-  font-size: clamp(2.5rem, 6vw, 6.75rem) !important;
+  font-size: clamp(2rem, 4.3vw, 4.8rem) !important;
   line-height: 1.05 !important;
   text-align: center !important;
 }
 #customModule44 .hero-heading .et_pb_text_1 h1 {
   color: #fff !important;
-  font-size: clamp(1.25rem, 2.5vw, 2.75rem) !important;
+  font-size: clamp(1.1rem, 1.8vw, 1.85rem) !important;
   line-height: 1.2 !important;
   text-align: center !important;
 }
@@ -3693,5 +3693,179 @@ body.admin-bar #efirsttexas-navbar {
   #customModule44 #hero_bar .search-actions #search_cta .search-cta-icon {
     width: 18px;
     height: 18px;
+  }
+}
+
+/* First Texas brand colors and spacing */
+:root {
+  --ft-primary: #214a24;
+  --ft-secondary: #e1df32;
+}
+#efirsttexas-navbar {
+  background: linear-gradient(180deg, rgba(33, 74, 36, 0.88), rgba(33, 74, 36, 0.14));
+}
+#efirsttexas-navbar .ft-navbar__navigation,
+#efirsttexas-navbar .ft-navbar__contact,
+#efirsttexas-navbar .ft-navbar__toggle {
+  margin-top: 10px;
+}
+#efirsttexas-navbar .ft-navbar__contact,
+#efirsttexas-navbar .ft-navbar__toggle {
+  border-color: var(--ft-secondary);
+}
+#efirsttexas-navbar .ft-navbar__contact:hover,
+#efirsttexas-navbar .ft-navbar__contact:focus-visible {
+  color: var(--ft-primary) !important;
+  background: var(--ft-secondary);
+}
+#customModule44 #hero_bar {
+  background: rgba(33, 74, 36, 0.9);
+}
+#customModule44 #hero_bar .search-actions #search_cta li a:hover,
+#customModule44 #hero_bar .search-actions #search_cta li a:focus-visible {
+  color: var(--ft-secondary);
+}
+
+/* Welcome copy */
+#cherieYoung #pele #welcome .content-col h1 {
+  color: var(--ft-primary);
+  font-size: clamp(2rem, 3.2vw, 3.5rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.12;
+  margin: 0 0 20px !important;
+  letter-spacing: -0.02em;
+}
+#cherieYoung #pele #welcome .content-col h2 {
+  color: var(--ft-primary);
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  line-height: 1.2;
+  margin: 28px 0 14px;
+}
+#cherieYoung #pele #welcome .content-col p {
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+#cherieYoung #pele #welcome .content-col .welcome-lead {
+  color: var(--ft-primary);
+  font-weight: 600;
+}
+#cherieYoung #pele #welcome .image-col img {
+  width: 100%;
+  max-width: 90%;
+  border-radius: 8px;
+}
+
+/* Agent profiles */
+#cherieYoung #pele #agents-showcase {
+  padding: 80px 24px;
+  background: #f6f7f1;
+}
+#cherieYoung #pele #agents-showcase .container {
+  width: min(100%, 1500px);
+  margin: 0 auto;
+}
+#agents-showcase .agents-showcase__heading {
+  text-align: center;
+  margin-bottom: 36px;
+}
+#agents-showcase .agents-showcase__eyebrow {
+  color: var(--ft-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+#agents-showcase .agents-showcase__heading h2 {
+  color: var(--ft-primary);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  line-height: 1.1;
+  margin: 10px 0 12px;
+}
+#agents-showcase .agents-showcase__heading p:last-child {
+  font-size: 1.1rem;
+  margin: 0;
+}
+#agents-showcase .agents-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+#agents-showcase .agent-profile-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(33, 74, 36, 0.18);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ft-primary);
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(33, 74, 36, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#agents-showcase .agent-profile-card:hover,
+#agents-showcase .agent-profile-card:focus-visible {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 30px rgba(33, 74, 36, 0.15);
+}
+#agents-showcase .agent-profile-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center top;
+}
+#agents-showcase .agent-profile-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+}
+#agents-showcase .agent-profile-card__body strong {
+  font-size: 1.35rem;
+  line-height: 1.15;
+}
+#agents-showcase .agent-profile-card__body > span:not(.agent-profile-card__action) {
+  color: #4e5f4f;
+  font-size: 0.9rem;
+}
+#agents-showcase .agent-profile-card__action {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 18px;
+  border-bottom: 2px solid var(--ft-secondary);
+  color: var(--ft-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+#agents-showcase .agents-showcase__all {
+  display: table;
+  margin: 36px auto 0;
+  padding: 12px 24px;
+  border-radius: 4px;
+  background: var(--ft-primary);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+#agents-showcase .agents-showcase__all:hover,
+#agents-showcase .agents-showcase__all:focus-visible {
+  background: var(--ft-secondary);
+  color: var(--ft-primary);
+}
+@media (max-width: 575.98px) {
+  #cherieYoung #pele #agents-showcase {
+    padding: 56px 16px;
+  }
+  #agents-showcase .agents-showcase__grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+  }
+  #agents-showcase .agent-profile-card__body {
+    padding: 14px;
+  }
+  #agents-showcase .agent-profile-card__body strong {
+    font-size: 1.1rem;
   }
 }
