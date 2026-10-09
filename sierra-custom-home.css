@@ -481,7 +481,7 @@ header nav > ul > li > a {
 }
 header.fixed.dynamic.reduced .sub-nav > li > a,
 header.fixed.dynamic.reduced nav > ul > li > a {
-  color: #e1df32 !important;
+  color: #214a24 !important;
 }
 header.fixed.dynamic.reduced {
   background: #000;
@@ -1900,7 +1900,7 @@ h6 {
   bottom: -2px;
   width: 45%;
   height: 2px;
-  background: #e1df32;
+  background: #214a24;
   transition: 300ms ease all;
 }
 
@@ -1981,7 +1981,7 @@ body
 #hero_bar .search-heading h3 span {
   display: block;
   font-family: "Josefin Sans", Sans-serif !important;
-  color: #e1df32;
+  color: #214a24;
   font-size: 60%;
   position: relative;
   margin-bottom: 10px;
@@ -1994,7 +1994,7 @@ body
   right: 100%;
   margin-right: 8px;
   width: 50px;
-  border-top: 1px solid #e1df32;
+  border-top: 1px solid #214a24;
   position: absolute;
 }
 
@@ -2090,7 +2090,7 @@ body
   left: 0;
   width: 100%;
   height: 0.1em;
-  background-color: #e1df32;
+  background-color: #214a24;
   opacity: 1;
   transform: translate3d(-101%, 0, 0);
   transition:
@@ -2100,7 +2100,7 @@ body
 
 #hero_bar .search-actions #search_cta li a .num {
   display: block;
-  color: #e1df32;
+  color: #214a24;
   font-family: "Marope", Georgia, serif;
   font-style: italic;
   font-size: 18px;
@@ -2357,7 +2357,14 @@ body
 }
 
 #search_areas {
-  margin-top: 50px;
+  margin-top: 0;
+}
+
+#customModule44,
+#customModule44 + #cherieYoung,
+#cherieYoung #pele {
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 #cherieYoung #pele .grid-row {
@@ -2628,7 +2635,7 @@ body
   position: absolute;
   width: 0px;
   height: 0px;
-  border: 2px solid #e1df32;
+  border: 2px solid #214a24;
   transition: 0.4s;
   z-index: 1;
   opacity: 0;
@@ -3344,7 +3351,7 @@ header.dynamic nav .menu-button .bar {
   font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
 }
 #efirsttexas-navbar.is-scrolled {
-  background: rgba(33, 74, 36, 0.97);
+  background: rgba(31, 31, 31, 0.97);
   border-bottom-color: rgba(255, 255, 255, 0.12);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
 }
@@ -3411,7 +3418,9 @@ header.dynamic nav .menu-button .bar {
 }
 #efirsttexas-navbar .ft-navbar__link:hover,
 #efirsttexas-navbar .ft-navbar__link:focus-visible {
-  color: #e1df32 !important;
+  color: #214a24 !important;
+  background: #fff;
+  border-radius: 3px;
 }
 #efirsttexas-navbar .ft-navbar__chevron {
   width: 7px;
@@ -3462,7 +3471,7 @@ header.dynamic nav .menu-button .bar {
   justify-content: center;
   min-height: 44px;
   padding: 0 18px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 0;
   border-radius: 3px;
   color: #fff !important;
   font: 700 14px/1.2 "Josefin Sans", Helvetica, Arial, sans-serif;
@@ -3503,7 +3512,7 @@ body.admin-bar #efirsttexas-navbar {
 @media (max-width: 991px) {
   #efirsttexas-navbar,
   #efirsttexas-navbar.is-scrolled {
-    background: rgba(33, 74, 36, 0.97);
+    background: rgba(31, 31, 31, 0.97);
     border-bottom-color: rgba(255, 255, 255, 0.12);
   }
   #efirsttexas-navbar .ft-navbar__inner,
@@ -3558,7 +3567,7 @@ body.admin-bar #efirsttexas-navbar {
     max-height: calc(100vh - 78px);
     overflow-y: auto;
     padding: 14px 24px 22px;
-    background: rgba(33, 74, 36, 0.99);
+    background: rgba(31, 31, 31, 0.99);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
   }
   #efirsttexas-navbar.is-menu-open .ft-navbar__navigation {
@@ -3699,31 +3708,30 @@ body.admin-bar #efirsttexas-navbar {
 /* First Texas brand colors and spacing */
 :root {
   --ft-primary: #214a24;
-  --ft-secondary: #e1df32;
 }
 #efirsttexas-navbar {
-  background: linear-gradient(180deg, rgba(33, 74, 36, 0.88), rgba(33, 74, 36, 0.14));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.42), transparent);
 }
 #efirsttexas-navbar .ft-navbar__navigation,
 #efirsttexas-navbar .ft-navbar__contact,
 #efirsttexas-navbar .ft-navbar__toggle {
   margin-top: 10px;
 }
-#efirsttexas-navbar .ft-navbar__contact,
 #efirsttexas-navbar .ft-navbar__toggle {
-  border-color: var(--ft-secondary);
+  border-color: rgba(255, 255, 255, 0.7);
 }
 #efirsttexas-navbar .ft-navbar__contact:hover,
 #efirsttexas-navbar .ft-navbar__contact:focus-visible {
-  color: var(--ft-primary) !important;
-  background: var(--ft-secondary);
+  color: #fff !important;
+  background: var(--ft-primary);
 }
 #customModule44 #hero_bar {
-  background: rgba(33, 74, 36, 0.9);
+  background: rgba(0, 0, 0, 0.72);
 }
 #customModule44 #hero_bar .search-actions #search_cta li a:hover,
 #customModule44 #hero_bar .search-actions #search_cta li a:focus-visible {
-  color: var(--ft-secondary);
+  color: #fff;
+  background: var(--ft-primary);
 }
 
 /* Welcome copy */
@@ -3788,7 +3796,7 @@ body.admin-bar #efirsttexas-navbar {
 }
 #agents-showcase .agents-showcase__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
 }
 #agents-showcase .agent-profile-card {
@@ -3834,32 +3842,22 @@ body.admin-bar #efirsttexas-navbar {
   align-self: flex-start;
   margin-top: auto;
   padding-top: 18px;
-  border-bottom: 2px solid var(--ft-secondary);
+  border-bottom: 2px solid var(--ft-primary);
   color: var(--ft-primary);
   font-size: 0.9rem;
   font-weight: 700;
 }
-#agents-showcase .agents-showcase__all {
-  display: table;
-  margin: 36px auto 0;
-  padding: 12px 24px;
-  border-radius: 4px;
-  background: var(--ft-primary);
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-}
-#agents-showcase .agents-showcase__all:hover,
-#agents-showcase .agents-showcase__all:focus-visible {
-  background: var(--ft-secondary);
-  color: var(--ft-primary);
+@media (max-width: 991.98px) {
+  #agents-showcase .agents-showcase__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (max-width: 575.98px) {
   #cherieYoung #pele #agents-showcase {
     padding: 56px 16px;
   }
   #agents-showcase .agents-showcase__grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
   }
   #agents-showcase .agent-profile-card__body {
@@ -3867,5 +3865,10 @@ body.admin-bar #efirsttexas-navbar {
   }
   #agents-showcase .agent-profile-card__body strong {
     font-size: 1.1rem;
+  }
+}
+@media (max-width: 340px) {
+  #agents-showcase .agents-showcase__grid {
+    grid-template-columns: 1fr;
   }
 }
