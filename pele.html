@@ -1,13 +1,39 @@
-<link
-  rel="stylesheet"
-  href="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/sierra-custom-home.css"
-/>
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<script
-  type="text/javascript"
-  src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/script.js"
-></script>
-
+<header id="efirsttexas-navbar" class="ft-navbar">
+  <div class="ft-navbar__inner">
+    <a class="ft-navbar__brand" href="/" aria-label="First Texas Brokerage Company home">
+      <img
+        src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-normal.webp"
+        alt="First Texas Brokerage Company"
+      />
+    </a>
+    <button class="ft-navbar__toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="ft-navbar-navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="ft-navbar__navigation" id="ft-navbar-navigation" aria-label="Main navigation">
+      <ul class="ft-navbar__links">
+        <li class="ft-navbar__item"><a class="ft-navbar__link" href="/">Home</a></li>
+        <li class="ft-navbar__item ft-navbar__item--dropdown">
+          <button class="ft-navbar__link ft-navbar__dropdown-toggle" type="button" aria-expanded="false" aria-controls="ft-navbar-search">Search <span class="ft-navbar__chevron" aria-hidden="true"></span></button>
+          <ul class="ft-navbar__submenu" id="ft-navbar-search">
+            <li><a href="/results-gallery/?sort=importdate&amp;status=A%2CCS">Explore Properties</a></li>
+            <li><a href="/results-gallery/?custom=136124%2C136123">Temple–Belton</a></li>
+            <li><a href="/results-gallery/?city=179231~39194&amp;sort=importdate&amp;status=A%2CCS">Salado</a></li>
+          </ul>
+        </li>
+        <li class="ft-navbar__item"><a class="ft-navbar__link" href="/buy/">Buying</a></li>
+        <li class="ft-navbar__item ft-navbar__item--dropdown">
+          <button class="ft-navbar__link ft-navbar__dropdown-toggle" type="button" aria-expanded="false" aria-controls="ft-navbar-selling">Selling <span class="ft-navbar__chevron" aria-hidden="true"></span></button>
+          <ul class="ft-navbar__submenu" id="ft-navbar-selling">
+            <li><a href="/sell/">Sell Your Home</a></li>
+            <li><a href="/home-valuation/">What’s My Home Worth?</a></li>
+          </ul>
+        </li>
+        <li class="ft-navbar__item"><a class="ft-navbar__link" href="/home-valuation/">Home Value</a></li>
+      </ul>
+    </nav>
+    <a class="ft-navbar__contact" href="tel:+12549475577">Call (254) 947-5577</a>
+  </div>
+</header>
 <section
   class="custom"
   id="customModule44"
@@ -18,7 +44,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    background-image: url(&quot;https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/hero.webp&quot;);
+    background-image: url(&quot;https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/hero-mobile.webp&quot;);
     background-position: center;
     background-size: cover;
   "
@@ -53,49 +79,24 @@
     </div>
     <div class="search-actions" style="display: flex; justify-content: center">
       <ul id="search_cta">
-        <!-- <li style="text-align: center">
-          <a style="pointer-events: none" href="/">
-            <span class="num">01</span>
-            <span style="text-transform: capitalize !important" class="linktext"
-              >In Real Estate Sold</span
-            >
+        <li>
+          <a href="/results-gallery/?city=179231%2C39193%2C39196&amp;minprice=250000&amp;status=A">
+            <svg class="search-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+            <span class="linktext">Galery View</span>
           </a>
         </li>
-        <li style="text-align: center">
-          <a style="pointer-events: none" href="/">
-            <span class="num">02</span>
-            <span style="text-transform: capitalize !important" class="linktext"
-              >Homes Sold</span
-            >
-          </a>
-        </li> -->
-        <li style="text-align: center">
-          <a href="/contact/clientreviews/">
-            <span style="display: none" class="num">03</span>
-            <!-- <span class="num">450+ 5-Star Reviews</span> -->
-            <span
-              style="text-transform: capitalize !important"
-              class="linktext"
-            >
-              450+ 5-Star Reviews on Google and Zillow</span
-            >
+        <li>
+          <a href="/results-map/?status=A">
+            <svg class="search-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span class="linktext">Map View</span>
           </a>
         </li>
-        <!-- <li style="text-align: center">
-          <a style="pointer-events: none" href="/">
-            <span style="display: none" class="num">00</span>
-            <span style="text-transform: capitalize !important" class="num"
-              >Best of Kansas City</span
-            >
-            <span
-              style="text-transform: capitalize !important"
-              class="linktext"
-            >
-              Realtors</span
-            >
+        <li>
+          <a href="/results-gallery/?UserID=all">
+            <svg class="search-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10"/><path d="M9 21v-7h6v7"/></svg>
+            <span class="linktext">Our Listings</span>
           </a>
-        </li> -->
-        <li style="display: none" class="searchform"></li>
+        </li>
       </ul>
     </div>
   </div>
@@ -125,7 +126,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -142,7 +143,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -163,7 +164,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -176,11 +177,11 @@
             <a
               href="https://www.efirsttexas.com/results-gallery/?minprice=1000000&photo=1&sort=importdate&status=A%2CCS"
               class="cy-lazy lazy"
-              data-photosource="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/Custom-Home-Lots.webp"
+              data-photosource="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/luxury-property.webp"
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -201,7 +202,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -218,7 +219,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -239,7 +240,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -256,7 +257,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -288,7 +289,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -305,7 +306,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -326,7 +327,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -343,7 +344,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -365,7 +366,7 @@
             >
               <img
                 decoding="async"
-                src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+                src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
                 alt=""
                 class="search-logo"
               />
@@ -467,7 +468,7 @@
           <span style="display: none">Contact</span>
           <img
             class="contact-logo"
-            src="https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png"
+            src="https://cy-boomtown-assets.s3.us-west-1.amazonaws.com/sites/efirsttexas.com/webp+images/logo-no-bg.webp"
             alt="logo"
           />
         </h2>

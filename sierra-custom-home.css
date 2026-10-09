@@ -2641,7 +2641,7 @@ body
 }
 
 #cherieYoung #pele .grid-row .grid-item .cy-lazy:hover .search-logo {
-  filter: none;
+  filter: brightness(0);
   transition: 0.4s;
 }
 
@@ -3371,7 +3371,7 @@ header.dynamic nav .menu-button .bar {
   width: 100%;
   max-height: 76px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: none;
   transition: max-height 0.3s ease;
 }
 #efirsttexas-navbar.is-scrolled .ft-navbar__brand img {
@@ -3631,5 +3631,67 @@ body.admin-bar #efirsttexas-navbar {
   }
   #efirsttexas-navbar.is-menu-open .ft-navbar__contact {
     visibility: hidden;
+  }
+}
+
+/* Hero heading and property search choices */
+#customModule44 .hero-heading {
+  width: 100%;
+  text-align: center;
+}
+#customModule44 .hero-heading .et_pb_text_0 h1 {
+  color: #fff !important;
+  font-size: clamp(2.5rem, 6vw, 6.75rem) !important;
+  line-height: 1.05 !important;
+  text-align: center !important;
+}
+#customModule44 .hero-heading .et_pb_text_1 h1 {
+  color: #fff !important;
+  font-size: clamp(1.25rem, 2.5vw, 2.75rem) !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+}
+#customModule44 #hero_bar .search-actions #search_cta {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  overflow: visible;
+}
+#customModule44 #hero_bar .search-actions #search_cta li {
+  width: auto;
+  margin: 0;
+}
+#customModule44 #hero_bar .search-actions #search_cta li::after {
+  display: none;
+}
+#customModule44 #hero_bar .search-actions #search_cta li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px;
+  white-space: nowrap;
+}
+#customModule44 #hero_bar .search-actions #search_cta .search-cta-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+@media (max-width: 575.98px) {
+  #customModule44 #hero_bar .search-actions #search_cta {
+    gap: 0 8px;
+  }
+  #customModule44 #hero_bar .search-actions #search_cta li a {
+    padding: 8px;
+  }
+  #customModule44 #hero_bar .search-actions #search_cta li a .linktext {
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+  #customModule44 #hero_bar .search-actions #search_cta .search-cta-icon {
+    width: 18px;
+    height: 18px;
   }
 }
