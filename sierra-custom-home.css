@@ -3394,7 +3394,7 @@ header.dynamic nav .menu-button .bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(12px, 1.5vw, 28px);
+  gap: clamp(4px, 0.7vw, 12px);
 }
 #efirsttexas-navbar .ft-navbar__item {
   position: relative;
@@ -3405,7 +3405,7 @@ header.dynamic nav .menu-button .bar {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 0;
+  padding: 12px clamp(8px, 0.9vw, 14px);
   border: 0;
   background: none;
   color: #fff !important;
@@ -3418,8 +3418,8 @@ header.dynamic nav .menu-button .bar {
 }
 #efirsttexas-navbar .ft-navbar__link:hover,
 #efirsttexas-navbar .ft-navbar__link:focus-visible {
-  color: #214a24 !important;
-  background: #fff;
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.14);
   border-radius: 3px;
 }
 #efirsttexas-navbar .ft-navbar__chevron {
@@ -3761,7 +3761,7 @@ body.admin-bar #efirsttexas-navbar {
 #cherieYoung #pele #welcome .image-col img {
   width: 100%;
   max-width: 90%;
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 /* Agent profiles */
@@ -3901,8 +3901,9 @@ body.admin-bar #efirsttexas-navbar {
   color: #fff !important;
 }
 #footer .bt-footer__button {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border-color: rgba(255, 255, 255, 0.55) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 /* Property links and the home value section */
@@ -3949,4 +3950,142 @@ body.admin-bar #efirsttexas-navbar {
 #footer {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+/* Hero card and action links */
+#customModule44 .hero-heading > .et_pb_column {
+  display: inline-block !important;
+  float: none !important;
+  width: fit-content !important;
+  max-width: calc(100vw - 32px);
+  margin: 0 auto !important;
+  padding: 18px 28px;
+}
+#customModule44 #hero_bar #search_cta a {
+  border-bottom: 0 !important;
+  text-decoration: none !important;
+}
+#customModule44 #hero_bar #search_cta a::after {
+  display: none !important;
+}
+
+/* Match the home value action with the property grid accent. */
+#cherieYoung #pele #homevalue a.btn::after {
+  background: #e1df32;
+}
+
+/* Clear type hierarchy in the welcome section. */
+#cherieYoung #pele #welcome.cy-custom div.container div.row div.col-md-7.content-col h1 {
+  font-size: clamp(2.4rem, 3.5vw, 3.5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+#cherieYoung #pele #welcome .content-col p.welcome-lead {
+  color: #214a24;
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.35;
+}
+#cherieYoung #pele #welcome .content-col h2 {
+  font-size: clamp(1.15rem, 1.55vw, 1.35rem) !important;
+  font-weight: 600;
+  margin: 26px 0 12px;
+}
+#cherieYoung #pele #welcome .content-col p:not(.welcome-lead) {
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  font-weight: 400;
+  line-height: 1.6;
+}
+#agents-showcase .agents-showcase__heading p:last-child {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.4;
+}
+
+/* Solid primary buttons for contacting the team. */
+#cherieYoung #pele #welcome .content-col a.btn,
+#cherieYoung #pele #contact_us .btgf-form-main button.btn--primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 46px;
+  padding: 12px 24px !important;
+  border: 0 !important;
+  border-radius: 5px;
+  background: #214a24 !important;
+  color: #fff !important;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif !important;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+#cherieYoung #pele #welcome .content-col a.btn:hover,
+#cherieYoung #pele #welcome .content-col a.btn:focus-visible,
+#cherieYoung #pele #contact_us .btgf-form-main button.btn--primary:hover,
+#cherieYoung #pele #contact_us .btgf-form-main button.btn--primary:focus-visible {
+  background: #356f3a !important;
+  color: #fff !important;
+}
+#cherieYoung #pele #welcome .content-col a.btn::after,
+#cherieYoung #pele #contact_us .btgf-form-main button.btn--primary::after {
+  display: none !important;
+}
+
+/* BoomTown contact form styling. */
+#cherieYoung #pele #contact_us .btgf-form-main {
+  box-sizing: border-box;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  color: #214a24;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__label {
+  display: block;
+  margin-bottom: 6px;
+  color: #214a24 !important;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__input,
+#cherieYoung #pele #contact_us .btgf-form-main .form__textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 11px 13px !important;
+  border: 1px solid #c5cbc6 !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+  color: #252525 !important;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__input:focus,
+#cherieYoung #pele #contact_us .btgf-form-main .form__textarea:focus {
+  outline: 2px solid rgba(33, 74, 36, 0.18);
+  border-color: #214a24 !important;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .btgf-field {
+  margin-bottom: 16px;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-label {
+  color: #465454;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__disclaimer,
+#cherieYoung #pele #contact_us .btgf-form-main .form__disclaimer * {
+  color: #6b7370 !important;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__disclaimer a {
+  text-decoration: underline;
 }
