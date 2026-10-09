@@ -997,12 +997,12 @@ self.postMessage({
 
     if (mountVideo()) return;
 
-    // BoomTown may render the custom homepage block after this script starts.
-    const observer = new MutationObserver(() => {
-      if (mountVideo()) observer.disconnect();
-    });
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    setTimeout(() => observer.disconnect(), 15000);
+    // BoomTown can finish injecting the custom homepage after this script runs.
+    let attempts = 0;
+    const retryTimer = setInterval(() => {
+      attempts += 1;
+      if (mountVideo() || attempts >= 40) clearInterval(retryTimer);
+    }, 500);
   }
 
   function changeLogo() {
