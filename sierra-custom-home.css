@@ -2635,7 +2635,7 @@ body
   position: absolute;
   width: 0px;
   height: 0px;
-  border: 2px solid #214a24;
+  border: 2px solid #e1df32;
   transition: 0.4s;
   z-index: 1;
   opacity: 0;
@@ -3346,14 +3346,14 @@ header.dynamic nav .menu-button .bar {
   width: 100%;
   color: #fff;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.36), transparent);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  border-bottom: 0;
   transition: background-color 0.3s ease, border-color 0.3s ease;
   font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
 }
 #efirsttexas-navbar.is-scrolled {
   background: rgba(31, 31, 31, 0.97);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  border-bottom: 0;
+  box-shadow: none;
 }
 #efirsttexas-navbar .ft-navbar__inner {
   width: min(100% - 48px, 1680px);
@@ -3513,7 +3513,7 @@ body.admin-bar #efirsttexas-navbar {
   #efirsttexas-navbar,
   #efirsttexas-navbar.is-scrolled {
     background: rgba(31, 31, 31, 0.97);
-    border-bottom-color: rgba(255, 255, 255, 0.12);
+    border-bottom: 0;
   }
   #efirsttexas-navbar .ft-navbar__inner,
   #efirsttexas-navbar.is-scrolled .ft-navbar__inner {
@@ -3871,4 +3871,36 @@ body.admin-bar #efirsttexas-navbar {
   #agents-showcase .agents-showcase__grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Keep the custom navigation free of an underline. */
+#efirsttexas-navbar a,
+#efirsttexas-navbar button {
+  text-decoration: none !important;
+}
+
+/* The BoomTown form block is moved into this existing contact area. */
+#cherieYoung #pele #contact_us .contact-form-inject .wp-block-columns {
+  display: block;
+  margin: 0;
+}
+#cherieYoung #pele #contact_us .contact-form-inject .wp-block-column {
+  width: 100%;
+  padding: 0;
+}
+
+/* BoomTown footer */
+#footer,
+#footer .bt-footer,
+#footer .bt-footer-nav {
+  background: #214a24 !important;
+  background-image: none !important;
+}
+#footer,
+#footer * {
+  color: #fff !important;
+}
+#footer .bt-footer__button {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
 }

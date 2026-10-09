@@ -866,78 +866,28 @@ self.postMessage({
     });
   }
   function setupFormInjection() {
-    // Configuration
-    const sourceSelectors = [".md-form", ".si-form"]; // Multiple possible sources
-    const targetSelector = ".contact-form-inject";
-    const checkInterval = 500;
-    const maxAttempts = 20;
+    const moveBoomTownForm = () => {
+      const target = document.querySelector("#contact_us .contact-form-inject");
+      if (!target) return false;
 
-    let attempts = 0;
-    let injectionComplete = false;
-    let observer = null;
-    let checkIntervalId = null;
-
-    function setupFormObserver() {
-      if (!window.MutationObserver) return;
-
-      observer = new MutationObserver(() => {
-        if (!injectionComplete && injectForm()) {
-          observer.disconnect();
-        }
-      });
-
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-      });
-    }
-
-    function injectForm() {
-      const targetContainer = document.querySelector(targetSelector);
-      if (!targetContainer) return false;
-
-      for (const selector of sourceSelectors) {
-        const sourceForm = document.querySelector(selector);
-        if (sourceForm) {
-          targetContainer.appendChild(sourceForm);
-          console.log(`Form (${selector}) successfully injected`);
-          injectionComplete = true;
-
-          if (checkIntervalId) {
-            clearInterval(checkIntervalId);
-            checkIntervalId = null;
-          }
-          return true;
-        }
-      }
-
-      return false;
-    }
-
-    // Try immediate injection
-    if (injectForm()) return;
-
-    // Fallbacks
-    setupFormObserver();
-
-    checkIntervalId = setInterval(() => {
-      attempts++;
-      if (injectForm()) return;
-
-      if (attempts >= maxAttempts) {
-        console.warn("Failed to inject form after maximum attempts");
-        clearInterval(checkIntervalId);
-        checkIntervalId = null;
-
-        if (!observer) setupFormObserver();
-      }
-    }, checkInterval);
-
-    // Cleanup hook
-    return function cleanup() {
-      if (checkIntervalId) clearInterval(checkIntervalId);
-      if (observer) observer.disconnect();
+      const source = Array.from(document.querySelectorAll(".wp-block-columns")).find(
+        (columns) =>
+          columns.querySelector(
+            '.btgf-form-loader, [data-btgf-form-index], [id^="submit-"]',
+          ),
+      );
+      if (!source) return false;
+      if (!target.contains(source)) target.appendChild(source);
+      return true;
     };
+
+    if (moveBoomTownForm() || !window.MutationObserver) return;
+
+    const observer = new MutationObserver(() => {
+      if (moveBoomTownForm()) observer.disconnect();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }
   function convertArticlesToLinks() {
     const container = document.querySelector("#cherieYoung .design");
