@@ -952,6 +952,47 @@ self.postMessage({
       article.replaceWith(link);
     });
   }
+  function setupHeroVideo() {
+    const hero = document.querySelector("#customModule44");
+    if (!hero || hero.querySelector(".hero-video-container")) return;
+    if (window.innerWidth < 768 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const videoId = "u2O_srjK0qc";
+    const styleId = "efirsttexas-hero-video-styles";
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement("style");
+      style.id = styleId;
+      style.textContent = `
+        #customModule44 { overflow: hidden !important; isolation: isolate; }
+        #customModule44 > .hero-video-container {
+          position: absolute; inset: 0; overflow: hidden; z-index: 0;
+          pointer-events: none;
+        }
+        #customModule44 > .hero-video-container iframe {
+          position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
+          min-width: 177.78vh; min-height: 56.25vw; border: 0;
+          transform: translate(-50%, -50%); pointer-events: none;
+        }
+        #customModule44 > .hero-heading, #customModule44 > #hero_bar {
+          z-index: 1;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    const container = document.createElement("div");
+    container.className = "hero-video-container";
+    container.setAttribute("aria-hidden", "true");
+
+    const iframe = document.createElement("iframe");
+    iframe.title = "First Texas Brokerage Company homepage video";
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1`;
+    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+    iframe.tabIndex = -1;
+    container.appendChild(iframe);
+    hero.insertBefore(container, hero.firstChild);
+  }
+
   function changeLogo() {
     const logo = document.querySelector("#home43405 > header > div > a > img");
     if (!logo) return;
@@ -974,6 +1015,7 @@ self.postMessage({
    */
   function initializeApp() {
     console.log("app initialized in init function");
+    setupHeroVideo();
 
     // Check for critical feature support
     if (!featureSupport.hasRequiredFeatures()) {
