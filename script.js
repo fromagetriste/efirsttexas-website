@@ -961,6 +961,95 @@ self.postMessage({
       article.replaceWith(link);
     });
   }
+  function setupCustomNavbar() {
+    const mountNavbar = () => {
+      const hero = document.querySelector("#customModule44");
+      if (!hero) return false;
+      if (document.querySelector("#efirsttexas-navbar")) return true;
+
+      const header = document.createElement("header");
+      header.id = "efirsttexas-navbar";
+      header.className = "ft-navbar";
+      header.innerHTML = `
+        <div class="ft-navbar__inner">
+          <a class="ft-navbar__brand" href="/" aria-label="First Texas Brokerage Company home">
+            <img src="https://bt-wpstatic.freetls.fastly.net/wp-content/blogs.dir/6888/files/2019/12/Innerpage.png" alt="First Texas Brokerage Company">
+          </a>
+          <button class="ft-navbar__toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="ft-navbar-navigation">
+            <span></span><span></span><span></span>
+          </button>
+          <nav class="ft-navbar__navigation" id="ft-navbar-navigation" aria-label="Main navigation">
+            <ul class="ft-navbar__links">
+              <li class="ft-navbar__item"><a class="ft-navbar__link" href="/">Home</a></li>
+              <li class="ft-navbar__item ft-navbar__item--dropdown">
+                <button class="ft-navbar__link ft-navbar__dropdown-toggle" type="button" aria-expanded="false" aria-controls="ft-navbar-search">Search <span class="ft-navbar__chevron" aria-hidden="true"></span></button>
+                <ul class="ft-navbar__submenu" id="ft-navbar-search">
+                  <li><a href="/results-gallery/?sort=importdate&amp;status=A%2CCS">Explore Properties</a></li>
+                  <li><a href="/results-gallery/?custom=136124%2C136123">Temple–Belton</a></li>
+                  <li><a href="/results-gallery/?city=179231~39194&amp;sort=importdate&amp;status=A%2CCS">Salado</a></li>
+                </ul>
+              </li>
+              <li class="ft-navbar__item"><a class="ft-navbar__link" href="/buy/">Buying</a></li>
+              <li class="ft-navbar__item ft-navbar__item--dropdown">
+                <button class="ft-navbar__link ft-navbar__dropdown-toggle" type="button" aria-expanded="false" aria-controls="ft-navbar-selling">Selling <span class="ft-navbar__chevron" aria-hidden="true"></span></button>
+                <ul class="ft-navbar__submenu" id="ft-navbar-selling">
+                  <li><a href="/sell/">Sell Your Home</a></li>
+                  <li><a href="/home-valuation/">What’s My Home Worth?</a></li>
+                </ul>
+              </li>
+              <li class="ft-navbar__item"><a class="ft-navbar__link" href="/home-valuation/">Home Value</a></li>
+            </ul>
+          </nav>
+          <a class="ft-navbar__contact" href="tel:+12549475577">Call (254) 947-5577</a>
+        </div>`;
+
+      hero.parentElement.insertBefore(header, hero);
+
+      const menuToggle = header.querySelector(".ft-navbar__toggle");
+      menuToggle.addEventListener("click", () => {
+        const open = header.classList.toggle("is-menu-open");
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+      });
+
+      header.querySelectorAll(".ft-navbar__dropdown-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".ft-navbar__item--dropdown");
+          const open = item.classList.toggle("is-open");
+          button.setAttribute("aria-expanded", String(open));
+        });
+      });
+
+      header.querySelectorAll(".ft-navbar__navigation a").forEach((link) => {
+        link.addEventListener("click", () => {
+          header.classList.remove("is-menu-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          header.querySelectorAll(".ft-navbar__dropdown-toggle").forEach((button) => {
+            button.setAttribute("aria-expanded", "false");
+            button.closest(".ft-navbar__item--dropdown").classList.remove("is-open");
+          });
+        });
+      });
+
+      if (!window.__efirstTexasNavbarScrollHandler) {
+        window.__efirstTexasNavbarScrollHandler = true;
+        const updateScrollState = () => {
+          document.querySelector("#efirsttexas-navbar")?.classList.toggle("is-scrolled", window.scrollY > 40);
+        };
+        window.addEventListener("scroll", updateScrollState, { passive: true });
+        updateScrollState();
+      }
+      return true;
+    };
+
+    mountNavbar();
+    const navbarObserver = observerRegistry.register(
+      "customNavbar",
+      new MutationObserver(() => mountNavbar()),
+    );
+    navbarObserver.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
   function setupHeroVideo() {
     const mountVideo = () => {
       const hero = document.querySelector("#customModule44");
@@ -1040,6 +1129,7 @@ self.postMessage({
    */
   function initializeApp() {
     console.log("app initialized in init function");
+    setupCustomNavbar();
     setupHeroVideo();
 
     // Check for critical feature support
