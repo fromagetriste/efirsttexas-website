@@ -953,18 +953,12 @@ self.postMessage({
     });
   }
   function changeLogo() {
-    // const navbar = document.querySelector("#home43405 > header");
     const logo = document.querySelector("#home43405 > header > div > a > img");
+    if (!logo) return;
+
     logo.src =
       "https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/applebaumkc.com/images/logo+nobg.png";
     logo.style.filter = "brightness(0) invert(1)";
-    // window.addEventListener('scroll', function() {
-    //   if (navbar.classList.contains('reduced')) {
-    //     logo.style.filter = 'invert(1)';
-    //   } else {
-    //     logo.style.filter = 'none';
-    //   }
-    // });
   }
 
   changeLogo();
