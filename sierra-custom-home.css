@@ -1866,7 +1866,7 @@ h6 {
   border-radius: 0;
   font-weight: 400;
   background: rgba(0, 0, 0, 0) !important;
-  border-bottom: 2px solid #465454;
+  border-bottom: 2px solid #858168;
   text-align: left;
   font-size: 18px;
   text-transform: uppercase;
@@ -1900,7 +1900,7 @@ h6 {
   bottom: -2px;
   width: 45%;
   height: 2px;
-  background: #214a24;
+  background: #e1df32;
   transition: 300ms ease all;
 }
 
@@ -4088,4 +4088,141 @@ body.admin-bar #efirsttexas-navbar {
 }
 #cherieYoung #pele #contact_us .btgf-form-main .form__disclaimer a {
   text-decoration: underline;
+}
+
+/* Navigation dropdowns and contact link */
+#efirsttexas-navbar .ft-navbar__submenu {
+  background: rgba(30, 34, 30, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+}
+#efirsttexas-navbar .ft-navbar__submenu a {
+  color: #fff !important;
+}
+#efirsttexas-navbar .ft-navbar__submenu a:hover,
+#efirsttexas-navbar .ft-navbar__submenu a:focus-visible {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff !important;
+}
+#efirsttexas-navbar .ft-navbar__contact {
+  background: rgba(255, 255, 255, 0.08);
+}
+#efirsttexas-navbar .ft-navbar__contact:hover,
+#efirsttexas-navbar .ft-navbar__contact:focus-visible {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+}
+@media (max-width: 991px) {
+  #efirsttexas-navbar .ft-navbar__submenu {
+    background: transparent !important;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Align the welcome image and copy from the same top edge. */
+#cherieYoung #pele #welcome {
+  padding-bottom: 72px;
+}
+#cherieYoung #pele #welcome .container > .row {
+  align-items: flex-start !important;
+}
+#cherieYoung #pele #welcome .image-col img {
+  display: block;
+  height: auto;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+#cherieYoung #pele #welcome .content-col a.btn {
+  min-height: 48px;
+  padding: 0 24px !important;
+  line-height: 1 !important;
+  vertical-align: middle;
+}
+#agents-showcase .agents-showcase__heading p:last-child {
+  color: #214a24;
+}
+
+/* Contact branding and BoomTown form details */
+#cherieYoung #pele #contact_us .contact-holder h2 {
+  margin: 0 0 24px;
+  line-height: 1;
+}
+#cherieYoung #pele #contact_us .contact-logo {
+  display: block;
+  width: 180px !important;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__label-group {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-wrap: nowrap;
+  margin-bottom: 6px;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__label-group .form__label {
+  display: inline;
+  margin: 0;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__required-text {
+  color: #214a24;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-label,
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-label * {
+  color: #6b7370 !important;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Follow links beneath the form */
+#cherieYoung #pele #contact_us .contact-social {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #d5ddd5;
+  text-align: center;
+}
+#cherieYoung #pele #contact_us .contact-social h3 {
+  margin: 0 0 16px;
+  color: #214a24;
+  font-size: 24px;
+  font-weight: 700;
+}
+#cherieYoung #pele #contact_us .contact-social__links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+#cherieYoung #pele #contact_us .contact-social__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 10px 16px;
+  border: 1px solid #d5ddd5;
+  border-radius: 5px;
+  color: #214a24;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+#cherieYoung #pele #contact_us .contact-social__links a:hover,
+#cherieYoung #pele #contact_us .contact-social__links a:focus-visible {
+  background: #214a24;
+  color: #fff;
+}
+#cherieYoung #pele #contact_us .contact-social__links svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+  flex: none;
 }
