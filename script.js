@@ -511,6 +511,15 @@ self.postMessage({
               const photoSource = element.getAttribute("data-photosource");
 
               if (!photoSource) {
+                // Some BoomTown blocks already have their background image inline
+                // and therefore have no data-photosource attribute to lazy-load.
+                const hasImage =
+                  (element.tagName.toLowerCase() === "img" && element.getAttribute("src")) ||
+                  (element.style && element.style.backgroundImage && element.style.backgroundImage !== "none");
+                if (hasImage) {
+                  element.classList.add("fade-in");
+                  element.classList.remove("lazy");
+                }
                 observers.lazy.unobserve(element);
                 return;
               }
@@ -995,14 +1004,18 @@ self.postMessage({
       return true;
     };
 
-    if (mountVideo()) return;
+    mountVideo();
 
-    // BoomTown can finish injecting the custom homepage after this script runs.
-    let attempts = 0;
-    const retryTimer = setInterval(() => {
-      attempts += 1;
-      if (mountVideo() || attempts >= 40) clearInterval(retryTimer);
-    }, 500);
+    // BoomTown can inject or replace the custom homepage after this script runs.
+    // Recheck after DOM updates and restore the iframe if the hero is re-rendered.
+    const heroObserver = observerRegistry.register(
+      "heroVideo",
+      new MutationObserver(() => mountVideo()),
+    );
+    heroObserver.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
   }
 
   function changeLogo() {
