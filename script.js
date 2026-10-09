@@ -881,12 +881,16 @@ self.postMessage({
       return true;
     };
 
-    if (moveBoomTownForm() || !window.MutationObserver) return;
+    if (!window.MutationObserver) {
+      moveBoomTownForm();
+      return;
+    }
 
-    const observer = new MutationObserver(() => {
-      if (moveBoomTownForm()) observer.disconnect();
-    });
+    // BoomTown can render or replace its form after the homepage initializes.
+    // Keep this observer so a replacement is moved back into the contact area.
+    const observer = new MutationObserver(() => moveBoomTownForm());
     observer.observe(document.body, { childList: true, subtree: true });
+    moveBoomTownForm();
     return () => observer.disconnect();
   }
   function convertArticlesToLinks() {

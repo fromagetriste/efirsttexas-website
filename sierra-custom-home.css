@@ -3904,3 +3904,49 @@ body.admin-bar #efirsttexas-navbar {
   background: rgba(255, 255, 255, 0.14) !important;
   border-color: rgba(255, 255, 255, 0.55) !important;
 }
+
+/* Property links and the home value section */
+#cherieYoung #pele #search_areas .heading-box a.btn::after {
+  background: #e1df32;
+}
+#cherieYoung #pele #homevalue {
+  opacity: 1 !important;
+  background-size: cover;
+  background-position: center;
+}
+#cherieYoung #pele #homevalue .inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: clamp(390px, 42vw, 580px);
+  padding: 70px 24px;
+}
+#cherieYoung #pele #homevalue span.title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.5rem) !important;
+}
+#cherieYoung #pele #homevalue span.title span {
+  margin-top: 8px;
+  font-size: clamp(1.1rem, 2vw, 1.9rem) !important;
+}
+#cherieYoung #pele #homevalue a.btn {
+  display: inline-block;
+  align-self: center;
+  margin-top: 10px;
+}
+
+/* Let BoomTown's rendered form fit the contact column. */
+#cherieYoung #pele #contact_us .contact-form-inject .wp-block-columns,
+#cherieYoung #pele #contact_us .contact-form-inject .btgf-form-main {
+  width: 100%;
+  max-width: 100%;
+}
+
+#footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
