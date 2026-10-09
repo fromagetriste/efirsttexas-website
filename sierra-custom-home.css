@@ -4226,3 +4226,111 @@ body.admin-bar #efirsttexas-navbar {
   height: 23px;
   flex: none;
 }
+
+/* Final homepage spacing and entrance effects. */
+#efirsttexas-navbar .ft-navbar__contact {
+  background: transparent !important;
+}
+#efirsttexas-navbar .ft-navbar__contact:hover,
+#efirsttexas-navbar .ft-navbar__contact:focus-visible {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+#customModule44 .hero-heading .et_pb_text_0 h1 {
+  font-size: clamp(1.85rem, 3.8vw, 4.25rem) !important;
+}
+@keyframes ft-hero-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+#customModule44 .ft-hero-appear {
+  animation: ft-hero-appear 0.9s ease-out both;
+}
+#customModule44 .ft-hero-appear--delayed {
+  animation-delay: 0.2s;
+}
+
+#cherieYoung #pele #search_areas .grid-item.ft-grid-reveal {
+  opacity: 0;
+  transition: opacity 0.85s ease-out;
+}
+#cherieYoung #pele #search_areas .grid-item.ft-grid-reveal-visible {
+  opacity: 1;
+}
+
+@media (min-width: 992px) {
+  #cherieYoung #pele #welcome .container > .row {
+    align-items: center !important;
+  }
+}
+#cherieYoung #pele #welcome .image-col img {
+  width: 100%;
+  max-width: 100% !important;
+}
+#cherieYoung #pele #welcome .content-col a.btn {
+  box-sizing: border-box;
+}
+#cherieYoung #pele #welcome .content-col a.btn span {
+  display: inline-block;
+  transform: translateY(2px);
+}
+
+#cherieYoung #pele #contact_us .photo-bg {
+  background-size: cover;
+}
+#cherieYoung #pele #contact_us .contact-holder {
+  padding: 24px 54px;
+}
+#cherieYoung #pele #contact_us .contact-holder h2 {
+  margin-bottom: 18px;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .btgf-field {
+  margin-bottom: 12px;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__textarea {
+  height: 130px !important;
+  min-height: 130px !important;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .btgf-submit {
+  margin-top: 24px !important;
+}
+#cherieYoung #pele #contact_us .btgf-form-main button.btn--primary {
+  min-height: 48px;
+  padding: 4px 24px 0 !important;
+  line-height: 1 !important;
+}
+#cherieYoung #pele #contact_us .contact-social {
+  margin-top: 24px;
+  padding-top: 20px;
+}
+#cherieYoung #pele #contact_us .contact-social__links a {
+  align-items: center !important;
+  line-height: 1;
+}
+#cherieYoung #pele #contact_us .contact-social__links a span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 23px;
+  transform: translateY(1px);
+}
+#footer {
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+@media (max-width: 991.98px) {
+  #cherieYoung #pele #contact_us .contact-holder {
+    padding: 24px 40px;
+  }
+}
+@media (max-width: 575.98px) {
+  #cherieYoung #pele #contact_us .contact-holder {
+    padding: 24px 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #customModule44 .ft-hero-appear { animation: none; }
+  #cherieYoung #pele #search_areas .grid-item.ft-grid-reveal {
+    opacity: 1;
+    transition: none;
+  }
+}

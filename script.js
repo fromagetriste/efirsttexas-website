@@ -672,6 +672,20 @@ self.postMessage({
           },
         ),
       ),
+
+      gridReveal: observerRegistry.register(
+        "gridReveal",
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("ft-grid-reveal-visible");
+              observers.gridReveal.unobserve(entry.target);
+            });
+          },
+          { root: null, rootMargin: "0px 0px -5% 0px", threshold: 0.05 },
+        ),
+      ),
     };
 
     // Observe all elements immediately
@@ -681,6 +695,10 @@ self.postMessage({
     document
       .querySelectorAll("[class*='-pre']")
       .forEach((el) => observers.fade.observe(el));
+    document.querySelectorAll("#search_areas .grid-item").forEach((tile) => {
+      tile.classList.add("ft-grid-reveal");
+      observers.gridReveal.observe(tile);
+    });
 
     // Set up mutation observer for dynamically added elements
     if (featureSupport.mutationObserver) {
