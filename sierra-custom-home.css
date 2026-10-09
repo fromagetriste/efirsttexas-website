@@ -4334,3 +4334,44 @@ body.admin-bar #efirsttexas-navbar {
     transition: none;
   }
 }
+
+/* Spacing for the welcome, reviews, and contact sections. */
+#cherieYoung #pele #welcome {
+  margin: 5rem 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@media (min-width: 992px) {
+  #cherieYoung #pele #welcome .container > .row {
+    flex-wrap: nowrap !important;
+    column-gap: 2.5rem;
+  }
+  #cherieYoung #pele #welcome .image-col {
+    flex: 0 0 calc((100% - 2.5rem) * 5 / 12);
+    max-width: calc((100% - 2.5rem) * 5 / 12);
+  }
+  #cherieYoung #pele #welcome .content-col {
+    flex: 0 0 calc((100% - 2.5rem) * 7 / 12);
+    max-width: calc((100% - 2.5rem) * 7 / 12);
+    min-width: 0;
+  }
+}
+#cherieYoung #pele #contact_us {
+  margin: 10rem 5rem;
+}
+#cherieYoung #pele #testimonials h2 {
+  color: #214a24 !important;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif !important;
+  font-size: clamp(2.4rem, 3.5vw, 3.5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-transform: none;
+  margin: 0 0 20px !important;
+}
+@media (max-width: 991.98px) {
+  #cherieYoung #pele #contact_us {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+}
