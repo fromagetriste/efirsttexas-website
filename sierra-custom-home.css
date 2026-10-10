@@ -4337,7 +4337,7 @@ body.admin-bar #efirsttexas-navbar {
 
 /* Spacing for the welcome, reviews, and contact sections. */
 #cherieYoung #pele #welcome {
-  margin: 5rem 0;
+  margin: 10rem 0 5rem;
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -4381,27 +4381,40 @@ body.admin-bar #efirsttexas-navbar {
   padding-top: 108px !important;
   padding-bottom: 108px !important;
 }
-#cherieYoung #pele #contact_us .contact-heading-button {
-  display: table;
-  margin: 0 auto 24px;
-  padding: 9px 20px;
-  border: 2px solid #214a24;
-  border-radius: 5px;
-  background: transparent;
-  color: #214a24 !important;
+#cherieYoung #pele #contact_us .contact-header {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+#cherieYoung #pele #contact_us .contact-header__title {
+  flex: 1 1 50%;
+  min-width: 0;
+  margin: 0;
+  color: #214a24;
   font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
-  font-size: clamp(1.5rem, 2.2vw, 2.25rem);
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.025em;
-  text-align: center;
-  text-decoration: none !important;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  text-align: left;
 }
-#cherieYoung #pele #contact_us .contact-heading-button:hover,
-#cherieYoung #pele #contact_us .contact-heading-button:focus-visible {
-  background: #214a24;
-  color: #fff !important;
+#cherieYoung #pele #contact_us .contact-header__brand {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 50%;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding-left: 18px;
+  border-left: 1px solid #b8beb9;
+}
+#cherieYoung #pele #contact_us .contact-header .contact-logo {
+  width: 150px !important;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
 }
 #contact-form {
   scroll-margin-top: 110px;
@@ -4417,4 +4430,24 @@ body.admin-bar #efirsttexas-navbar {
 }
 #cherieYoung #pele #contact_us .btgf-form-main .form__check-input {
   flex: 0 0 auto;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-input.smsoptin {
+  width: 26px;
+  height: 26px;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-input.smsoptin + .form__check-label,
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-input.smsoptin + .form__check-label * {
+  font-size: 24px !important;
+  line-height: 1.2 !important;
+}
+#customModule44 .hero-heading #MyHiddenElement h1 {
+  font-weight: 700 !important;
+}
+@media (max-width: 575.98px) {
+  #cherieYoung #pele #contact_us .contact-header {
+    gap: 12px;
+  }
+  #cherieYoung #pele #contact_us .contact-header__brand {
+    padding-left: 12px;
+  }
 }
