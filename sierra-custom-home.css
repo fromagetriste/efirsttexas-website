@@ -4451,3 +4451,36 @@ body.admin-bar #efirsttexas-navbar {
     padding-left: 12px;
   }
 }
+
+/* Let the welcome photo fill the phone viewport and space it from the copy. */
+@media (max-width: 767.98px) {
+  #cherieYoung #pele #welcome {
+    margin-top: 4rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  #cherieYoung #pele #welcome > .container > .row {
+    gap: 3rem;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  #cherieYoung #pele #welcome .image-col,
+  #cherieYoung #pele #welcome .content-col {
+    flex: 0 0 100% !important;
+    width: 100%;
+    max-width: 100% !important;
+  }
+  #cherieYoung #pele #welcome .image-col {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  #cherieYoung #pele #welcome .image-col img {
+    width: 100%;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  #cherieYoung #pele #welcome .content-col {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+  }
+}
