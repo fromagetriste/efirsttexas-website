@@ -4432,12 +4432,12 @@ body.admin-bar #efirsttexas-navbar {
   flex: 0 0 auto;
 }
 #cherieYoung #pele #contact_us .btgf-form-main .form__check-input.smsoptin {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
 }
 #cherieYoung #pele #contact_us .btgf-form-main .form__check-input.smsoptin + .form__check-label,
 #cherieYoung #pele #contact_us .btgf-form-main .form__check-input.smsoptin + .form__check-label * {
-  font-size: 24px !important;
+  font-size: 20px !important;
   line-height: 1.2 !important;
 }
 #customModule44 .hero-heading #MyHiddenElement h1 {
