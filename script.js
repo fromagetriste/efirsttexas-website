@@ -911,6 +911,22 @@ self.postMessage({
     moveBoomTownForm();
     return () => observer.disconnect();
   }
+  function setupContactScroll() {
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
+      const link = event.target.closest('a[href="#contact-form"]');
+      if (!link || !link.closest("#welcome, #contact_us")) return;
+      const form = document.querySelector("#contact-form");
+      if (!form) return;
+      event.preventDefault();
+      form.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+        block: "start",
+      });
+    });
+  }
   function convertArticlesToLinks() {
     const container = document.querySelector("#cherieYoung .design");
     if (!container) return;
@@ -1064,6 +1080,7 @@ self.postMessage({
     console.log("app initialized in init function");
     setupCustomNavbar();
     setupHeroVideo();
+    setupContactScroll();
 
     // Check for critical feature support
     if (!featureSupport.hasRequiredFeatures()) {

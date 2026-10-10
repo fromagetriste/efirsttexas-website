@@ -4375,3 +4375,46 @@ body.admin-bar #efirsttexas-navbar {
     margin-left: 1.5rem;
   }
 }
+
+/* Contact actions and form finishing details. */
+#footer {
+  padding-top: 108px !important;
+  padding-bottom: 108px !important;
+}
+#cherieYoung #pele #contact_us .contact-heading-button {
+  display: table;
+  margin: 0 auto 24px;
+  padding: 9px 20px;
+  border: 2px solid #214a24;
+  border-radius: 5px;
+  background: transparent;
+  color: #214a24 !important;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-size: clamp(1.5rem, 2.2vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-align: center;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+#cherieYoung #pele #contact_us .contact-heading-button:hover,
+#cherieYoung #pele #contact_us .contact-heading-button:focus-visible {
+  background: #214a24;
+  color: #fff !important;
+}
+#contact-form {
+  scroll-margin-top: 110px;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-input,
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-label {
+  margin: 0;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-input {
+  flex: 0 0 auto;
+}
