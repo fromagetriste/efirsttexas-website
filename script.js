@@ -884,6 +884,89 @@ self.postMessage({
     });
   }
   function setupFormInjection() {
+    const arrangeBoomTownFields = (form) => {
+      const fullName = form.querySelector('input[name="fullname"]');
+      const originalNameField = fullName?.closest(".btgf-field");
+      if (!originalNameField || originalNameField.dataset.ftNameSplit) return;
+
+      const makeNameField = (labelText, autocomplete) => {
+        const field = document.createElement("div");
+        field.className = "btgf-field ft-name-field";
+        const group = document.createElement("div");
+        group.className = "form__group";
+        const labelGroup = document.createElement("div");
+        labelGroup.className = "form__label-group";
+        const label = document.createElement("label");
+        label.className = "form__label";
+        label.textContent = labelText;
+        const required = document.createElement("span");
+        required.className = "form__required-text";
+        required.setAttribute("aria-label", "required");
+        required.textContent = "*";
+        const input = document.createElement("input");
+        input.className = "form__input";
+        input.type = "text";
+        input.id = `ft-${autocomplete}-${fullName.id}`;
+        input.autocomplete = autocomplete;
+        input.setAttribute("aria-label", labelText);
+        input.required = true;
+        label.htmlFor = input.id;
+        labelGroup.append(label, required);
+        group.append(labelGroup, input);
+        field.appendChild(group);
+        return { field, input };
+      };
+
+      const first = makeNameField("First Name", "given-name");
+      const last = makeNameField("Last Name", "family-name");
+      const initialName = fullName.value.trim();
+      if (initialName) {
+        const parts = initialName.split(/\s+/);
+        first.input.value = parts.shift() || "";
+        last.input.value = parts.join(" ");
+      }
+
+      const syncFullName = () => {
+        fullName.value = [first.input.value.trim(), last.input.value.trim()]
+          .filter(Boolean)
+          .join(" ");
+        fullName.dispatchEvent(new Event("input", { bubbles: true }));
+        fullName.dispatchEvent(new Event("change", { bubbles: true }));
+      };
+      [first.input, last.input].forEach((input) => {
+        input.addEventListener("input", () => {
+          input.setCustomValidity("");
+          syncFullName();
+        });
+      });
+      form.addEventListener(
+        "submit",
+        (event) => {
+          syncFullName();
+          const missing = [first.input, last.input].find(
+            (input) => !input.value.trim(),
+          );
+          if (missing) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            missing.setCustomValidity("Please complete this field.");
+            missing.reportValidity();
+          }
+        },
+        true,
+      );
+
+      originalNameField.dataset.ftNameSplit = "true";
+      originalNameField.setAttribute("aria-hidden", "true");
+      fullName.tabIndex = -1;
+      originalNameField.before(first.field, last.field);
+      const emailField = form.querySelector('input[name="email"]')?.closest(".btgf-field");
+      const phoneField = form.querySelector('input[name="phone"]')?.closest(".btgf-field");
+      if (emailField && phoneField) emailField.before(phoneField);
+      form.classList.add("ft-contact-grid");
+      syncFullName();
+    };
+
     const moveBoomTownForm = () => {
       const target = document.querySelector("#contact_us .contact-form-inject");
       if (!target) return false;
@@ -896,6 +979,7 @@ self.postMessage({
       );
       if (!source) return false;
       if (!target.contains(source)) target.appendChild(source);
+      source.querySelectorAll(".btgf-form-main").forEach(arrangeBoomTownFields);
       return true;
     };
 
