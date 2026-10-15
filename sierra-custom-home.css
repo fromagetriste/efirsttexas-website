@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 /*@font-face {
     font-family: Manrope;
     src: url(https://cy-sierra-assets.s3.us-west-1.amazonaws.com/sites/tangentrealty.com/pele/Brand+Fonts/Manrope-Medium.ttf);
@@ -4483,4 +4484,83 @@ body.admin-bar #efirsttexas-navbar {
     padding-right: 1rem !important;
     padding-left: 1rem !important;
   }
+}
+
+/* Match the typography roles and weights used on the Applebaum KC homepage. */
+#efirsttexas-navbar,
+#efirsttexas-navbar .ft-navbar__link,
+#efirsttexas-navbar .ft-navbar__submenu a,
+#efirsttexas-navbar .ft-navbar__contact {
+  font-family: "Roboto", Arial, sans-serif !important;
+  font-weight: 300 !important;
+}
+
+#customModule44 .hero-heading .et_pb_text_0 h1,
+#customModule44 .hero-heading .et_pb_text_1 h1,
+#customModule44 .hero-heading #MyHiddenElement h1 {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif !important;
+  font-weight: 300 !important;
+}
+#customModule44 #hero_bar #search_cta a {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif !important;
+  font-weight: 400 !important;
+}
+
+#cherieYoung #pele {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+}
+#cherieYoung #pele #welcome .content-col h1,
+#cherieYoung #pele #welcome.cy-custom div.container div.row div.col-md-7.content-col h1,
+#cherieYoung #pele #testimonials h2,
+#cherieYoung #pele #contact_us .contact-header__title,
+#cherieYoung #pele #contact_us .contact-social h3 {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif !important;
+  font-weight: 100 !important;
+}
+#cherieYoung #pele #welcome .content-col p,
+#cherieYoung #pele #welcome .content-col p.welcome-lead,
+#cherieYoung #pele #welcome .content-col p:not(.welcome-lead) {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif !important;
+  font-weight: 300 !important;
+}
+#cherieYoung #pele #welcome .content-col a.btn,
+#cherieYoung #pele #contact_us .contact-social__links a {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* The reference site's native contact form uses Arial. */
+#cherieYoung #pele #contact_us .btgf-form-main,
+#cherieYoung #pele #contact_us .btgf-form-main .form__label,
+#cherieYoung #pele #contact_us .btgf-form-main .form__required-text,
+#cherieYoung #pele #contact_us .btgf-form-main .form__input,
+#cherieYoung #pele #contact_us .btgf-form-main .form__textarea,
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-label,
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-label *,
+#cherieYoung #pele #contact_us .btgf-form-main .form__disclaimer,
+#cherieYoung #pele #contact_us .btgf-form-main .form__disclaimer *,
+#cherieYoung #pele #contact_us .btgf-form-main button.btn--primary {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__label,
+#cherieYoung #pele #contact_us .btgf-form-main .form__required-text {
+  font-weight: 700 !important;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .form__input,
+#cherieYoung #pele #contact_us .btgf-form-main .form__textarea,
+#cherieYoung #pele #contact_us .btgf-form-main .form__check-label,
+#cherieYoung #pele #contact_us .btgf-form-main .form__disclaimer,
+#cherieYoung #pele #contact_us .btgf-form-main button.btn--primary {
+  font-weight: 400 !important;
+}
+
+#footer {
+  font-family: "Roboto", Arial, sans-serif !important;
+  font-weight: 300 !important;
+}
+#footer a,
+#footer p,
+#footer li {
+  font-family: inherit !important;
+  font-weight: 300 !important;
 }
