@@ -4592,6 +4592,7 @@ body.admin-bar #efirsttexas-navbar {
 #cherieYoung #pele #welcome .content-col a.btn {
   display: inline-block;
   min-height: 0;
+  margin-top: 2rem;
   padding: 10px 50px 10px 0 !important;
   border: 0 !important;
   border-bottom: 2px solid #858168 !important;
@@ -4625,6 +4626,9 @@ body.admin-bar #efirsttexas-navbar {
 #cherieYoung #pele #contact_us .contact-header__title {
   text-align: center;
 }
+#cherieYoung #pele #testimonials h2 {
+  font-weight: 300 !important;
+}
 
 #cherieYoung #pele #contact_us .btgf-form-main.ft-contact-grid {
   position: relative;
@@ -4647,6 +4651,22 @@ body.admin-bar #efirsttexas-navbar {
   height: 1px !important;
   overflow: hidden !important;
   clip-path: inset(50%) !important;
+}
+#cherieYoung #pele #contact_us .btgf-form-main .btgf-submit {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+#cherieYoung #pele #contact_us .btgf-form-main button.btn--primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-height: 40px !important;
+  padding: 0 18px !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  text-align: center !important;
 }
 @media (max-width: 575.98px) {
   #cherieYoung #pele #contact_us .btgf-form-main.ft-contact-grid {
