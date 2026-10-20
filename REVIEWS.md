@@ -4,8 +4,8 @@ This is a manually maintained snapshot of the First Texas Brokerage Co Google li
 
 ## Install in BoomTown
 
-1. Replace the entire existing `<section id="testimonials">…</section>` with `google-reviews-section.html`. The full `pele.html` already contains this section.
-2. Update the stylesheet and `script.js` CDN URLs to the same published Git commit.
+1. Paste the complete `pele.html` into the homepage HTML block. It includes the reviews section and the CSS/JavaScript CDN tags. There is no separate reviews HTML file to install.
+2. Remove the older `sierra-custom-home.css` and project `script.js` tags from BoomTown’s custom code settings or other blocks, so each asset loads only once. The embedded tags are pinned to `6b56a70`, the published revision containing the reviews code and data.
 3. Swiper 12.2.0 and `google-reviews.json` load automatically. No additional script tags or JSON links are needed in BoomTown.
 
 The script resolves the JSON beside its own URL. For example, a script loaded from `…@COMMIT/script.js` loads `…@COMMIT/google-reviews.json`. This keeps the code and data on the same revision.
