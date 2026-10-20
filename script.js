@@ -971,12 +971,7 @@ self.postMessage({
         "ft-review__quote" + (review.excerpt ? "" : " ft-review__quote--empty"),
         review.excerpt ? `“${review.excerpt}”` : "This reviewer left a star rating without a written comment.",
       );
-      const link = element("a", "ft-review__link", "Read on Google ↗");
-      link.href = googleUrl(review.sourceUrl);
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.setAttribute("aria-label", `Read ${review.author}'s reviews on Google`);
-      card.append(header, stars, quote, link);
+      card.append(header, stars, quote);
       return card;
     };
     const mount = async (section) => {
@@ -987,8 +982,6 @@ self.postMessage({
         if (stopped || !section.isConnected) return;
         const wrapper = section.querySelector("[data-reviews-cards]");
         wrapper.replaceChildren(...data.reviews.map(renderCard));
-        section.querySelector("[data-reviews-summary]").textContent =
-          `${data.rating.toFixed(1)} out of 5 · ${data.totalReviews} Google reviews`;
         section.querySelector("[data-reviews-link]").href = googleUrl(data.sourceUrl);
         status.hidden = true;
 
@@ -996,11 +989,6 @@ self.postMessage({
           const Swiper = await getSwiper();
           if (stopped || !section.isConnected) return;
           const container = section.querySelector(".ft-reviews__swiper");
-          const position = section.querySelector("[data-reviews-position]");
-          const updatePosition = (slider) => {
-            const visible = Math.min(data.reviews.length, Math.floor(slider.params.slidesPerView));
-            position.textContent = `${slider.activeIndex + 1}–${Math.min(slider.activeIndex + visible, data.reviews.length)} / ${data.reviews.length}`;
-          };
           const slider = new Swiper(container, {
             slidesPerView: 1,
             spaceBetween: 20,
@@ -1024,7 +1012,6 @@ self.postMessage({
               1024: { slidesPerView: 3 },
               1200: { slidesPerView: 4 },
             },
-            on: { init: updatePosition, slideChange: updatePosition, resize: updatePosition },
           });
           sliders.add(slider);
           section.querySelector("[data-reviews-controls]").hidden = false;

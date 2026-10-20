@@ -4773,7 +4773,7 @@ body.admin-bar #efirsttexas-navbar {
 }
 #cherieYoung #pele .ft-review__stars {
   margin: 22px 0 16px;
-  color: #99871c;
+  color: #e1df32;
   font-size: 20px;
   line-height: 1;
   letter-spacing: 3px;
@@ -4866,3 +4866,9 @@ body.admin-bar #efirsttexas-navbar {
 @media (prefers-reduced-motion: reduce) {
   #cherieYoung #pele .ft-reviews__arrow { transition: none; }
 }
+
+/* Hide retired review details when an older homepage HTML block is cached. */
+#cherieYoung #pele .ft-reviews__summary,
+#cherieYoung #pele .ft-reviews__position,
+#cherieYoung #pele .ft-reviews__note,
+#cherieYoung #pele .ft-review__link { display: none !important; }
