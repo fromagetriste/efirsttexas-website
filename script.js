@@ -1,4 +1,7 @@
 console.log("script.js loaded");
+// Keep the review JSON on the same published revision as this script.
+const firstTexasScriptUrl = document.currentScript?.src ||
+  "https://cdn.jsdelivr.net/gh/fromagetriste/efirsttexas-website@main/script.js";
 let hasRunScripts = false;
 function runScripts() {
   if (hasRunScripts) {
@@ -883,6 +886,179 @@ self.postMessage({
       window.addEventListener("resize", calculateHeight);
     });
   }
+  function setupGoogleReviews() {
+    const mounted = new WeakSet();
+    const sliders = new Set();
+    let dataPromise;
+    let swiperPromise;
+    let stopped = false;
+
+    const googleUrl = (value) => {
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" &&
+          (url.hostname === "google.com" || url.hostname.endsWith(".google.com"))
+          ? url.href : null;
+      } catch {
+        return null;
+      }
+    };
+    const getData = () => {
+      if (!dataPromise) {
+        dataPromise = fetch(new URL("google-reviews.json", firstTexasScriptUrl))
+          .then((response) => {
+            if (!response.ok) throw new Error("Review data could not be loaded.");
+            return response.json();
+          })
+          .then((data) => {
+            if (!Array.isArray(data.reviews) || !data.reviews.length ||
+                !Number.isFinite(data.rating) || data.rating < 1 || data.rating > 5 ||
+                !Number.isInteger(data.totalReviews) || !googleUrl(data.sourceUrl)) {
+              throw new Error("Invalid review data.");
+            }
+            for (const review of data.reviews) {
+              if (typeof review.author !== "string" || !review.author.trim() ||
+                  typeof review.excerpt !== "string" ||
+                  !Number.isInteger(review.rating) || review.rating < 1 || review.rating > 5 ||
+                  !googleUrl(review.sourceUrl)) throw new Error("Invalid review entry.");
+            }
+            return data;
+          });
+      }
+      return dataPromise;
+    };
+    const getSwiper = () => {
+      if (!swiperPromise) {
+        const styles = new Promise((resolve, reject) => {
+          const link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = "https://cdn.jsdelivr.net/npm/swiper@12.2.0/swiper-bundle.min.css";
+          link.onload = resolve;
+          link.onerror = () => reject(new Error("Swiper styles could not be loaded."));
+          document.head.appendChild(link);
+        });
+        swiperPromise = Promise.all([
+          import("https://cdn.jsdelivr.net/npm/swiper@12.2.0/swiper-bundle.min.mjs"),
+          styles,
+        ]).then(([module]) => module.default);
+      }
+      return swiperPromise;
+    };
+    const element = (tag, className, text) => {
+      const node = document.createElement(tag);
+      node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    };
+    const renderCard = (review) => {
+      const card = element("article", "swiper-slide ft-review");
+      const header = element("div", "ft-review__header");
+      const initials = review.author.trim().split(/\s+/).slice(0, 2)
+        .map((part) => Array.from(part)[0]).join("").toUpperCase();
+      const avatar = element("span", "ft-review__avatar", initials);
+      avatar.setAttribute("aria-hidden", "true");
+      const author = element("div", "ft-review__identity");
+      author.append(
+        element("h3", "ft-review__author", review.author),
+        element("span", "ft-review__source", "Google review"),
+      );
+      header.append(avatar, author);
+      const stars = element("div", "ft-review__stars", "★".repeat(review.rating) + "☆".repeat(5 - review.rating));
+      stars.setAttribute("role", "img");
+      stars.setAttribute("aria-label", `${review.rating} out of 5 stars`);
+      const quote = element(
+        review.excerpt ? "blockquote" : "p",
+        "ft-review__quote" + (review.excerpt ? "" : " ft-review__quote--empty"),
+        review.excerpt ? `“${review.excerpt}”` : "This reviewer left a star rating without a written comment.",
+      );
+      const link = element("a", "ft-review__link", "Read on Google ↗");
+      link.href = googleUrl(review.sourceUrl);
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", `Read ${review.author}'s reviews on Google`);
+      card.append(header, stars, quote, link);
+      return card;
+    };
+    const mount = async (section) => {
+      mounted.add(section);
+      const status = section.querySelector("[data-reviews-status]");
+      try {
+        const data = await getData();
+        if (stopped || !section.isConnected) return;
+        const wrapper = section.querySelector("[data-reviews-cards]");
+        wrapper.replaceChildren(...data.reviews.map(renderCard));
+        section.querySelector("[data-reviews-summary]").textContent =
+          `${data.rating.toFixed(1)} out of 5 · ${data.totalReviews} Google reviews`;
+        section.querySelector("[data-reviews-link]").href = googleUrl(data.sourceUrl);
+        status.hidden = true;
+
+        try {
+          const Swiper = await getSwiper();
+          if (stopped || !section.isConnected) return;
+          const container = section.querySelector(".ft-reviews__swiper");
+          const position = section.querySelector("[data-reviews-position]");
+          const updatePosition = (slider) => {
+            const visible = Math.min(data.reviews.length, Math.floor(slider.params.slidesPerView));
+            position.textContent = `${slider.activeIndex + 1}–${Math.min(slider.activeIndex + visible, data.reviews.length)} / ${data.reviews.length}`;
+          };
+          const slider = new Swiper(container, {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            speed: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 400,
+            rewind: true,
+            grabCursor: true,
+            watchOverflow: true,
+            keyboard: { enabled: true, onlyInViewport: true },
+            navigation: {
+              prevEl: section.querySelector(".ft-reviews__prev"),
+              nextEl: section.querySelector(".ft-reviews__next"),
+            },
+            a11y: {
+              containerMessage: "Google customer reviews",
+              prevSlideMessage: "Previous reviews",
+              nextSlideMessage: "Next reviews",
+              slideLabelMessage: "Review {{index}} of {{slidesLength}}",
+            },
+            breakpoints: {
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1200: { slidesPerView: 4 },
+            },
+            on: { init: updatePosition, slideChange: updatePosition, resize: updatePosition },
+          });
+          sliders.add(slider);
+          section.querySelector("[data-reviews-controls]").hidden = false;
+        } catch (error) {
+          // Cards remain readable in a horizontally scrollable row without Swiper.
+          console.warn("Google reviews are using the scrollable fallback.", error);
+        }
+      } catch (error) {
+        status.textContent = "Read our customer reviews using the Google link below.";
+        console.warn("Google review data unavailable.", error);
+      }
+    };
+    const scan = () => {
+      if (stopped) return;
+      document.querySelectorAll("[data-google-reviews]").forEach((section) => {
+        if (!mounted.has(section)) mount(section);
+      });
+      sliders.forEach((slider) => {
+        if (!slider.el?.isConnected) {
+          slider.destroy(true, true);
+          sliders.delete(slider);
+        }
+      });
+    };
+    const observer = new MutationObserver(scan);
+    observer.observe(document.body, { childList: true, subtree: true });
+    scan();
+    return () => {
+      stopped = true;
+      observer.disconnect();
+      sliders.forEach((slider) => slider.destroy(true, true));
+      sliders.clear();
+    };
+  }
   function setupFormInjection() {
     const arrangeBoomTownFields = (form) => {
       const fullName = form.querySelector('input[name="fullname"]');
@@ -1173,12 +1349,14 @@ self.postMessage({
 
     const cleanupLazyLoad = setupLazyLoadAndFade();
     const cleanupFormInjection = setupFormInjection();
+    const cleanupGoogleReviews = setupGoogleReviews();
 
     setupNumberAnimation();
 
     window.addEventListener("beforeunload", () => {
       if (cleanupLazyLoad) cleanupLazyLoad();
       if (cleanupFormInjection) cleanupFormInjection();
+      if (cleanupGoogleReviews) cleanupGoogleReviews();
       observerRegistry.disconnectAll();
     });
 
