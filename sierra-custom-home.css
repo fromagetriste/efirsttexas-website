@@ -3060,7 +3060,7 @@ header.dynamic nav .menu-button .bar {
   background-color: #fff;
 }
 #customModule44 > div.hero-heading > div {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.45);
   padding: 20px;
   border-radius: 20px;
 }
@@ -4882,6 +4882,7 @@ body.admin-bar #efirsttexas-navbar {
   justify-content: center;
 }
 #cherieYoung #pele #search_areas .communities-heading h2 {
+  font-weight: 300 !important;
   font-size: clamp(32px, 4.3vw, 80px) !important;
 }
 #cherieYoung #pele #search_areas .grid-sbs,
@@ -4917,4 +4918,25 @@ body.admin-bar #efirsttexas-navbar {
 }
 #cherieYoung #pele #search_areas .grid-item {
   box-sizing: border-box;
+}
+
+/* Each side adds 10% of the label width to the Explore Properties link. */
+#cherieYoung #pele #search_areas .communities-heading a.btn {
+  display: inline-grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  width: max-content !important;
+  max-width: 100%;
+  align-self: flex-start;
+  font-size: clamp(14px, 4.6vw, 18px) !important;
+  padding: 10px 0 !important;
+  text-align: center;
+}
+#cherieYoung #pele #search_areas .communities-explore-label {
+  grid-column: 2;
+  white-space: nowrap;
+}
+@media (max-width: 767.98px) {
+  #cherieYoung #pele #search_areas .communities-heading a.btn {
+    align-self: center;
+  }
 }
