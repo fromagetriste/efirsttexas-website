@@ -2972,7 +2972,8 @@ header .logo img {
   top: 10px;
 }
 
-#search_areas > div:nth-child(3) > div > div > a {
+#search_areas a[data-photosource$="/commercial.webp"],
+#search_areas a[data-photosource$="/farm-and-ranch.webp"] {
   background-position: bottom;
 }
 
@@ -4872,3 +4873,48 @@ body.admin-bar #efirsttexas-navbar {
 #cherieYoung #pele .ft-reviews__position,
 #cherieYoung #pele .ft-reviews__note,
 #cherieYoung #pele .ft-review__link { display: none !important; }
+
+/* Community cards follow the customer’s reading order on every screen. */
+#cherieYoung #pele #search_areas .communities-heading {
+  padding: clamp(32px, 6vw, 100px) clamp(24px, 4vw, 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#cherieYoung #pele #search_areas .communities-heading h2 {
+  font-size: clamp(32px, 4.3vw, 80px) !important;
+}
+#cherieYoung #pele #search_areas .grid-sbs,
+#cherieYoung #pele #search_areas .grid-full,
+#cherieYoung #pele #search_areas .grid-half {
+  height: auto !important;
+}
+#cherieYoung #pele #search_areas .grid-item {
+  min-height: clamp(280px, 32vw, 560px);
+  height: auto;
+  display: flex;
+}
+#cherieYoung #pele #search_areas .grid-item > a {
+  height: auto;
+  min-height: inherit;
+}
+@media (max-width: 767.98px) {
+  #cherieYoung #pele #search_areas .communities-heading {
+    min-height: 300px;
+    text-align: center;
+    align-items: center;
+  }
+  #cherieYoung #pele #search_areas .communities-heading h2 {
+    font-size: clamp(30px, 8vw, 54px) !important;
+  }
+  #cherieYoung #pele #search_areas .grid-item {
+    min-height: clamp(260px, 65vw, 400px);
+  }
+}
+
+#cherieYoung #pele #search_areas .grid-half {
+  display: flex;
+}
+#cherieYoung #pele #search_areas .grid-item {
+  box-sizing: border-box;
+}
