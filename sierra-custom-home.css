@@ -5134,3 +5134,22 @@ body:has(#customModule44.ft-has-search) #efirsttexas-navbar {
   background: transparent !important;
   box-shadow: none !important;
 }
+
+/* Group the hero headings together and separate them from property search. */
+#customModule44 .hero-heading .et_pb_text_0 h1 {
+  margin-bottom: 12px !important;
+}
+#customModule44 .hero-heading .et_pb_text_1 h1 {
+  padding-top: 0 !important;
+}
+#customModule44 #ft-hero-search {
+  margin-top: 40px;
+}
+@media (max-width: 767.98px) {
+  #customModule44 .hero-heading .et_pb_text_0 h1 {
+    margin-bottom: 10px !important;
+  }
+  #customModule44 #ft-hero-search {
+    margin-top: 32px;
+  }
+}
