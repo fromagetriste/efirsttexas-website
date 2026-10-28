@@ -5036,7 +5036,8 @@ body.admin-bar #efirsttexas-navbar {
   margin: 12px auto 0;
   padding: 8px;
   color: #fff;
-  background: transparent;
+  background: transparent !important;
+  box-shadow: none !important;
   border: 0;
   text-shadow: 0 1px 2px #000;
 }
@@ -5122,4 +5123,12 @@ body:has(#customModule44.ft-has-search) .bt-header__mobile {
 }
 body:has(#customModule44.ft-has-search) #efirsttexas-navbar {
   background: rgba(31, 31, 31, 0.97);
+}
+
+/* Keep the nearby-search action transparent in every interaction state. */
+#customModule44 #ft-hero-search .ballerbox__nearby-button--homepage:hover,
+#customModule44 #ft-hero-search .ballerbox__nearby-button--homepage:focus,
+#customModule44 #ft-hero-search .ballerbox__nearby-button--homepage:active {
+  background: transparent !important;
+  box-shadow: none !important;
 }
