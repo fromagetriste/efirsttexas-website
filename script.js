@@ -1255,9 +1255,11 @@ self.postMessage({
       const mount = document.getElementById("ft-hero-search");
       if (!mount) return;
 
-      // Move BoomTown's React mount itself, never clone its form. This retains
-      // its event handlers, search store, dropdowns, and autocomplete service.
-      const nativeRoot = document.querySelector(".jsx-hero__search-bar");
+      // Custom homepages initialize this supported shortcode placeholder through
+      // BoomTown's homeSearchBarShortcode(). Wait for its React form to mount.
+      // Older templates may instead provide an existing native hero search.
+      const nativeRoot = mount.querySelector(".js-homesearchbar-shortcode") ||
+        document.querySelector(".jsx-hero__search-bar");
       if (nativeRoot) searchRoot = nativeRoot;
       if (!searchRoot?.querySelector("form")) return;
       if (!mount.contains(searchRoot)) {
