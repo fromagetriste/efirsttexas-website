@@ -5153,3 +5153,29 @@ body:has(#customModule44.ft-has-search) #efirsttexas-navbar {
     margin-top: 32px;
   }
 }
+
+/* Improve contrast and mobile readability in the company introduction. */
+#cherieYoung #pele #welcome.cy-custom div.container div.row div.col-md-7.content-col h1 {
+  color: #17391a !important;
+  font-weight: 400 !important;
+}
+#cherieYoung #pele #welcome .content-col p,
+#cherieYoung #pele #welcome .content-col p.welcome-lead,
+#cherieYoung #pele #welcome .content-col p:not(.welcome-lead) {
+  color: #202820 !important;
+  font-weight: 400 !important;
+}
+@media (max-width: 767.98px) {
+  #cherieYoung #pele #welcome.cy-custom div.container div.row div.col-md-7.content-col h1 {
+    font-size: clamp(2.7rem, 9vw, 3.2rem) !important;
+    line-height: 1.12;
+  }
+  #cherieYoung #pele #welcome .content-col p.welcome-lead {
+    font-size: 24px !important;
+    line-height: 1.45;
+  }
+  #cherieYoung #pele #welcome .content-col p:not(.welcome-lead) {
+    font-size: 20px !important;
+    line-height: 1.65;
+  }
+}
