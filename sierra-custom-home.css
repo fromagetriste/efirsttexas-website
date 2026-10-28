@@ -4966,6 +4966,8 @@ body.admin-bar #efirsttexas-navbar {
   font-weight: 400;
 }
 #ft-hero-search .bt-hero__search-bar {
+  background: transparent !important;
+  box-shadow: none !important;
   width: 100%;
   max-width: none;
   padding: 0;
