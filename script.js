@@ -1246,6 +1246,44 @@ self.postMessage({
     navbarObserver.observe(document.documentElement, { childList: true, subtree: true });
   }
 
+  function setupHeroSearch() {
+    let searchRoot = null;
+    let frame = null;
+
+    const mountSearch = () => {
+      frame = null;
+      const mount = document.getElementById("ft-hero-search");
+      if (!mount) return;
+
+      // Move BoomTown's React mount itself, never clone its form. This retains
+      // its event handlers, search store, dropdowns, and autocomplete service.
+      const nativeRoot = document.querySelector(".jsx-hero__search-bar");
+      if (nativeRoot) searchRoot = nativeRoot;
+      if (!searchRoot?.querySelector("form")) return;
+      if (!mount.contains(searchRoot)) {
+        const oldHero = searchRoot.closest("#hero-wrapper");
+        mount.appendChild(searchRoot);
+        if (oldHero && !oldHero.contains(mount)) oldHero.hidden = true;
+      }
+      const fallback = mount.querySelector(".ft-hero-search__fallback");
+      if (fallback && !fallback.hidden) fallback.hidden = true;
+      mount.closest("#customModule44")?.classList.add("ft-has-search");
+    };
+
+    const observer = observerRegistry.register(
+      "heroSearch",
+      new MutationObserver(() => {
+        if (frame === null) frame = requestAnimationFrame(mountSearch);
+      }),
+    );
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    mountSearch();
+    return () => {
+      observer.disconnect();
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
+  }
+
   function setupHeroVideo() {
     const mountVideo = () => {
       const hero = document.querySelector("#customModule44");
@@ -1327,6 +1365,7 @@ self.postMessage({
     console.log("app initialized in init function");
     setupCustomNavbar();
     setupHeroVideo();
+    const cleanupHeroSearch = setupHeroSearch();
     setupContactScroll();
 
     // Check for critical feature support
@@ -1341,6 +1380,7 @@ self.postMessage({
     setupNumberAnimation();
 
     window.addEventListener("beforeunload", () => {
+      cleanupHeroSearch();
       if (cleanupLazyLoad) cleanupLazyLoad();
       if (cleanupFormInjection) cleanupFormInjection();
       if (cleanupGoogleReviews) cleanupGoogleReviews();

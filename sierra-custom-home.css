@@ -4940,3 +4940,186 @@ body.admin-bar #efirsttexas-navbar {
     align-self: center;
   }
 }
+
+/* Native BoomTown search, mounted below the custom hero title. */
+#customModule44.ft-has-search {
+  overflow: visible !important;
+  min-height: 740px;
+  z-index: 2;
+}
+#customModule44.ft-has-search .hero-heading {
+  width: min(1080px, 100%);
+  box-sizing: border-box;
+}
+#customModule44.ft-has-search .hero-heading > .et_pb_column {
+  width: 100% !important;
+  box-sizing: border-box;
+  overflow: visible;
+}
+#ft-hero-search {
+  position: relative;
+  z-index: 20;
+  margin: 24px auto;
+  width: 100%;
+  text-align: left;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+}
+#ft-hero-search .bt-hero__search-bar {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+#ft-hero-search .ballerbox-wrapper--large {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+}
+#ft-hero-search .ballerbox-wrapper--large > .cell {
+  width: auto;
+  min-width: 0;
+  padding: 0;
+  flex: 1 1 auto;
+}
+#ft-hero-search .ballerbox-wrapper--large > .cell--autoSize {
+  flex: 0 0 auto;
+}
+#ft-hero-search .form__input-group {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  height: 56px;
+  background: #fff;
+  border-radius: 4px;
+}
+#ft-hero-search .form__input-group > .bt-ccomp {
+  flex: 0 0 auto;
+}
+#ft-hero-search .ballerbox__autocomplete-input {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  height: 56px;
+  font-size: 16px;
+  color: #222;
+  background: #fff;
+}
+#ft-hero-search .ballerbox__searchby-button {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  height: 56px;
+  padding: 0 16px;
+  border: 0;
+  border-right: 1px solid #ddd;
+  color: #222;
+  background: #f4f4f4;
+  white-space: nowrap;
+}
+#ft-hero-search button[type="submit"] {
+  height: 56px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 4px;
+  background: #214a24;
+  color: #fff;
+  white-space: nowrap;
+}
+#ft-hero-search .ballerbox__search-button__text {
+  display: inline;
+}
+#ft-hero-search .ballerbox__nearby-button--homepage {
+  display: block;
+  margin: 12px auto 0;
+  padding: 8px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  text-shadow: 0 1px 2px #000;
+}
+#ft-hero-search .bt-ccomp__content {
+  text-shadow: none;
+  color: #222;
+  z-index: 30;
+}
+#ft-hero-search .ft-hero-search__fallback {
+  color: #fff;
+  display: inline-block;
+  padding: 12px 18px;
+  background: #214a24;
+  border-radius: 4px;
+}
+#ft-hero-search .ft-hero-search__fallback[hidden] { display: none; }
+#cherieYoung #pele #search_areas .communities-heading h2 {
+  font-size: clamp(30px, 3.3vw, 64px) !important;
+  overflow-wrap: normal;
+}
+@media (max-width: 767.98px) {
+  #customModule44.ft-has-search {
+    min-height: 820px;
+    height: auto !important;
+    padding: 110px 12px 120px;
+    box-sizing: border-box;
+  }
+  #customModule44.ft-has-search .hero-heading {
+    padding: 0;
+  }
+  #customModule44.ft-has-search .hero-heading > .et_pb_column {
+    padding: 24px 14px;
+    max-width: 100%;
+  }
+  #ft-hero-search .ballerbox-wrapper--large {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  #ft-hero-search .ballerbox-wrapper--large > .cell {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+  #ft-hero-search button[type="submit"] {
+    width: 100%;
+    margin: 0 !important;
+  }
+  #ft-hero-search .ballerbox__searchby-button { padding: 0 10px; font-size: 14px; }
+  #ft-hero-search .ballerbox__autocomplete-input { padding-inline: 10px; }
+  #cherieYoung #pele #search_areas .communities-heading h2 {
+    font-size: clamp(28px, 6.5vw, 46px) !important;
+  }
+}
+/* Keep suggestions and search modes usable within a phone viewport. */
+#ft-hero-search .bt-ccomp__content {
+  max-height: min(60vh, 420px);
+  overflow-y: auto;
+}
+@media (max-width: 767.98px) {
+  #ft-hero-search .ballerbox__autocomplete-results {
+    /* Suggestions open beneath the stacked submit button, not over it. */
+    top: calc(100% + 66px);
+    max-height: 40vh;
+    overflow-y: auto;
+    z-index: 40;
+  }
+}
+#ft-hero-search button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+#ft-hero-search .ballerbox__search-button__icon {
+  position: static !important;
+  font-size: 16px;
+  line-height: 1;
+  transform: none;
+}
+/* The custom homepage already supplies its own desktop and mobile navigation. */
+body:has(#customModule44.ft-has-search) #top,
+body:has(#customModule44.ft-has-search) .bt-header__mobile {
+  display: none !important;
+}
+body:has(#customModule44.ft-has-search) #efirsttexas-navbar {
+  background: rgba(31, 31, 31, 0.97);
+}
