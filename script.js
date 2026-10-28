@@ -1287,11 +1287,58 @@ self.postMessage({
   }
 
   function setupHeroVideo() {
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let apiPromise;
+    let activeHero = null;
+    let container = null;
+    let player = null;
+    let stopped = false;
+
+    const loadYouTubeApi = () => {
+      if (window.YT?.Player) return Promise.resolve(window.YT);
+      if (apiPromise) return apiPromise;
+      apiPromise = new Promise((resolve, reject) => {
+        // The BoomTown theme may already load the API. Preserve its global
+        // ready callback and wait for the public Player constructor instead.
+        const started = Date.now();
+        const timer = setInterval(() => {
+          if (window.YT?.Player) {
+            clearInterval(timer);
+            resolve(window.YT);
+          } else if (stopped || Date.now() - started > 15000) {
+            clearInterval(timer);
+            reject(new Error("YouTube player API unavailable"));
+          }
+        }, 100);
+        if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+          const script = document.createElement("script");
+          script.src = "https://www.youtube.com/iframe_api";
+          script.async = true;
+          document.head.appendChild(script);
+        }
+      });
+      return apiPromise;
+    };
+
+    const removeVideo = () => {
+      if (player) {
+        try { player.destroy(); } catch (_) { /* Already removed by the theme. */ }
+      }
+      player = null;
+      container?.remove();
+      container = null;
+      activeHero = null;
+    };
+
     const mountVideo = () => {
       const hero = document.querySelector("#customModule44");
-      if (!hero) return false;
-      if (hero.querySelector(".hero-video-container")) return true;
-      if (window.innerWidth < 768 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
+      if (stopped || !hero || window.innerWidth < 768 || motionPreference.matches) {
+        removeVideo();
+        return;
+      }
+      if (activeHero === hero && container?.isConnected) return;
+      removeVideo();
+      activeHero = hero;
 
       const styleId = "efirsttexas-hero-video-styles";
       if (!document.getElementById(styleId)) {
@@ -1299,48 +1346,81 @@ self.postMessage({
         style.id = styleId;
         style.textContent = `
           #customModule44 { overflow: hidden !important; isolation: isolate; }
-          #customModule44 > .hero-video-container {
+          #customModule44 > .ft-hero-video {
             position: absolute; inset: 0; overflow: hidden; z-index: 0;
-            pointer-events: none;
+            pointer-events: none; opacity: 0; transition: opacity .4s ease;
           }
-          #customModule44 > .hero-video-container iframe {
+          #customModule44 > .ft-hero-video iframe {
             position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
             min-width: 177.78vh; min-height: 56.25vw; border: 0;
             transform: translate(-50%, -50%); pointer-events: none;
           }
-          #customModule44 > .hero-heading, #customModule44 > #hero_bar {
-            z-index: 1;
-          }
+          #customModule44 > .hero-heading, #customModule44 > #hero_bar { z-index: 1; }
         `;
         document.head.appendChild(style);
       }
 
-      const container = document.createElement("div");
-      container.className = "hero-video-container";
-      container.setAttribute("aria-hidden", "true");
-
+      const videoContainer = document.createElement("div");
+      videoContainer.className = "ft-hero-video";
+      videoContainer.setAttribute("aria-hidden", "true");
+      videoContainer.dataset.playback = "loading";
+      container = videoContainer;
       const iframe = document.createElement("iframe");
       iframe.title = "First Texas Brokerage Company homepage video";
-      iframe.src = "https://www.youtube.com/embed/u2O_srjK0qc?autoplay=1&mute=1&controls=0&loop=1&playlist=u2O_srjK0qc&playsinline=1&rel=0&modestbranding=1";
       iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
       iframe.tabIndex = -1;
-      container.appendChild(iframe);
-      hero.insertBefore(container, hero.firstChild);
-      return true;
+      const params = new URLSearchParams({
+        autoplay: "1", mute: "1", controls: "0", loop: "1", playlist: "u2O_srjK0qc",
+        playsinline: "1", rel: "0", disablekb: "1", enablejsapi: "1",
+        origin: window.location.origin,
+      });
+      iframe.src = `https://www.youtube.com/embed/u2O_srjK0qc?${params}`;
+      videoContainer.appendChild(iframe);
+      hero.insertBefore(videoContainer, hero.firstChild);
+
+      const fallback = (error) => {
+        if (!videoContainer.isConnected) return;
+        videoContainer.style.opacity = "0";
+        videoContainer.dataset.playback = "unavailable";
+        videoContainer.dataset.error = String(error);
+        console.warn("Hero video unavailable; showing background photo:", error);
+      };
+      loadYouTubeApi().then((YT) => {
+        if (stopped || container !== videoContainer || !videoContainer.isConnected) return;
+        player = new YT.Player(iframe, {
+          events: {
+            onReady: (event) => {
+              event.target.mute();
+              event.target.playVideo();
+            },
+            onStateChange: (event) => {
+              if (event.data === YT.PlayerState.PLAYING) {
+                videoContainer.dataset.playback = "playing";
+                videoContainer.style.opacity = "1";
+              } else if (event.data === YT.PlayerState.ENDED) {
+                event.target.playVideo();
+              }
+            },
+            onError: (event) => fallback(event.data),
+            onAutoplayBlocked: () => fallback("autoplay-blocked"),
+          },
+        });
+      }).catch((error) => fallback(error.message));
     };
 
+    const heroObserver = observerRegistry.register("heroVideo", new MutationObserver(mountVideo));
+    heroObserver.observe(document.documentElement, { childList: true, subtree: true });
+    window.addEventListener("resize", mountVideo);
+    motionPreference.addEventListener("change", mountVideo);
     mountVideo();
-
-    // BoomTown can inject or replace the custom homepage after this script runs.
-    // Recheck after DOM updates and restore the iframe if the hero is re-rendered.
-    const heroObserver = observerRegistry.register(
-      "heroVideo",
-      new MutationObserver(() => mountVideo()),
-    );
-    heroObserver.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-    });
+    return () => {
+      stopped = true;
+      heroObserver.disconnect();
+      window.removeEventListener("resize", mountVideo);
+      motionPreference.removeEventListener("change", mountVideo);
+      removeVideo();
+    };
   }
 
   function changeLogo() {
@@ -1366,7 +1446,7 @@ self.postMessage({
   function initializeApp() {
     console.log("app initialized in init function");
     setupCustomNavbar();
-    setupHeroVideo();
+    const cleanupHeroVideo = setupHeroVideo();
     const cleanupHeroSearch = setupHeroSearch();
     setupContactScroll();
 
@@ -1382,6 +1462,7 @@ self.postMessage({
     setupNumberAnimation();
 
     window.addEventListener("beforeunload", () => {
+      cleanupHeroVideo();
       cleanupHeroSearch();
       if (cleanupLazyLoad) cleanupLazyLoad();
       if (cleanupFormInjection) cleanupFormInjection();
